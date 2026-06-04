@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Logs/Test.md",
+                "file": "Projects/Proxmox.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Test"
+              "title": "Proxmox"
             }
           }
         ]
@@ -187,14 +187,10 @@
   "active": "477cb3b122f12faa",
   "lastOpenFiles": [
     "Daily Logs/2026-06-03.md",
-    "Untitled.md",
-    "Troubleshooting",
-    "Templates",
-    "Screenshots",
-    "Decisions",
     "Projects/Proxmox.md",
     "Troubleshooting/Untitled.md",
     "Daily Logs/Test.md",
+    "Untitled.md",
     "Welcome.md",
     "Templates",
     "Screenshots",
