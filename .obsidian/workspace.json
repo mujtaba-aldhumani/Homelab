@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Projects/Proxmox.md",
+                "file": "Projects/Proxmox Host.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Proxmox"
+              "title": "Proxmox Host"
+            }
+          },
+          {
+            "id": "5b8e9f8423c6fbdb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "conflict-files-obsidian-git.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "conflict-files-obsidian-git"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -184,10 +199,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "477cb3b122f12faa",
+  "active": "5b8e9f8423c6fbdb",
   "lastOpenFiles": [
-    "Daily Logs/2026-06-03.md",
+    "conflict-files-obsidian-git.md",
+    "Projects/Proxmox Host.md",
     "Projects/Proxmox.md",
+    "Daily Logs/2026-06-03.md",
     "Daily Logs/Test.md",
     "Untitled.md",
     "Troubleshooting",
