@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Projects/Proxmox Host.md",
+                "file": "Daily Logs/2026-06-03.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Proxmox Host"
+              "title": "2026-06-03"
             }
           }
         ]
@@ -184,7 +184,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1d3a21ad28a1be7f",
+  "active": "477cb3b122f12faa",
   "lastOpenFiles": [
     "Projects/Proxmox Host.md",
     "conflict-files-obsidian-git.md",
