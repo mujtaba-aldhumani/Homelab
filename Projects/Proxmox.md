@@ -65,7 +65,7 @@ Waiting for installation.
 4. Configure networking
 5. Create Ubuntu Server VM
 
-### 2026-06-04
+### 2026-07-11
 
 - Completed pre-installation checklist: BIOS virtualization settings (VT-x, VT-d), Secure Boot disabled, UEFI-only confirmed
 - Linked Windows OEM digital license to Microsoft account and saved product key as backup
