@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Projects/Proxmox Host.md",
+                "file": "Troubleshooting/Git Synchronization and Merge Conflict Troubleshooting.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Proxmox Host"
+              "title": "Git Synchronization and Merge Conflict Troubleshooting"
             }
           }
         ]
@@ -186,9 +186,9 @@
   },
   "active": "477cb3b122f12faa",
   "lastOpenFiles": [
+    "Projects/Proxmox Host.md",
     "Daily Logs/Test.md",
     "Daily Logs/2026-06-03.md",
-    "Projects/Proxmox Host.md",
     "Troubleshooting/Git Synchronization and Merge Conflict Troubleshooting.md",
     "conflict-files-obsidian-git.md",
     "Projects/Proxmox.md",
