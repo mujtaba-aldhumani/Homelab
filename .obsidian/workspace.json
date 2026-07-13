@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Logs/2026-07-11.md",
+                "file": "Daily Logs/2026-07-12.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-07-11"
+              "title": "2026-07-12"
             }
           }
         ]
@@ -185,8 +185,9 @@
   },
   "active": "794de4b6b9219482",
   "lastOpenFiles": [
-    "Projects/Proxmox.md",
     "Daily Logs/2026-07-11.md",
+    "Daily Logs/2026-07-12.md",
+    "Projects/Proxmox.md",
     "Daily Logs/Test.md",
     "Troubleshooting/Proxmox Installation - USB Boot and Network Connectivity Issues.md",
     "Daily Logs/2026-06-03.md",
