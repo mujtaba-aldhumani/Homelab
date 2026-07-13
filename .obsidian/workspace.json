@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Decisions/Windows Practice VM - Left Unactivated.md",
+                "file": "Troubleshooting/Proxmox Installation - USB Boot and Network Connectivity Issues.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Windows Practice VM - Left Unactivated"
+              "title": "Proxmox Installation - USB Boot and Network Connectivity Issues"
             }
           }
         ]
@@ -185,8 +185,13 @@
   },
   "active": "4aa935f6ec4544d6",
   "lastOpenFiles": [
+    "Projects/Proxmox.md",
     "Daily Logs/2026-07-12.md",
+    "Decisions/Vault Separation - Homelab vs Life.md",
+    "Decisions/Static IP over DHCP Reservation.md",
     "Decisions/Claude Desktop - Filesystem MCP over Code Tab.md",
+    "Decisions/Tailscale Proxy Approach for Stremio-RD.md",
+    "Decisions/Windows Practice VM - Left Unactivated.md",
     "Screenshots/windows11-activation-unable-reactivate.png",
     "Screenshots/tailscale-both-devices-connected.png",
     "Screenshots/windows11-activation-error.md",
@@ -200,11 +205,6 @@
     "Screenshots/windows11-activation-error.png.png",
     "Screenshots/windows11-vm-config.png.png",
     "Decisions/Filesystem - ext4+LVM over ZFS.md",
-    "Decisions/Tailscale Proxy Approach for Stremio-RD.md",
-    "Decisions/Static IP over DHCP Reservation.md",
-    "Decisions/Windows Practice VM - Left Unactivated.md",
-    "Decisions/Vault Separation - Homelab vs Life.md",
-    "Projects/Proxmox.md",
     "Daily Logs/2026-07-11.md",
     "Daily Logs/Test.md",
     "Troubleshooting/Proxmox Installation - USB Boot and Network Connectivity Issues.md",
