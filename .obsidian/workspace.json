@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Logs/Test.md",
+                "file": "Daily Logs/2026-07-11.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Test"
+              "title": "2026-07-11"
             }
           }
         ]
@@ -185,11 +185,11 @@
   },
   "active": "794de4b6b9219482",
   "lastOpenFiles": [
+    "Daily Logs/Test.md",
     "Daily Logs/2026-07-11.md",
     "Troubleshooting/Proxmox Installation - USB Boot and Network Connectivity Issues.md",
     "Projects/Proxmox.md",
     "Daily Logs/2026-06-03.md",
-    "Daily Logs/Test.md",
     "Troubleshooting/Git Synchronization and Merge Conflict Troubleshooting.md",
     "conflict-files-obsidian-git.md",
     "Troubleshooting",
