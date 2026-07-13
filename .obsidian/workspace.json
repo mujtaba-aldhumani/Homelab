@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "a524562ed6bf443a",
+        "id": "848878f586325abb",
         "type": "tabs",
         "children": [
           {
-            "id": "794de4b6b9219482",
+            "id": "4aa935f6ec4544d6",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -183,11 +183,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "794de4b6b9219482",
+  "active": "4aa935f6ec4544d6",
   "lastOpenFiles": [
-    "Daily Logs/Test.md",
-    "Daily Logs/2026-07-12.md",
     "Daily Logs/2026-07-11.md",
+    "Daily Logs/2026-07-12.md",
+    "Daily Logs/Test.md",
     "Projects/Proxmox.md",
     "Troubleshooting/Proxmox Installation - USB Boot and Network Connectivity Issues.md",
     "Daily Logs/2026-06-03.md",
