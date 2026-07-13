@@ -11,12 +11,14 @@
             "id": "4aa935f6ec4544d6",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Screenshots/tailscale-both-devices-connected.png"
+                "file": "Projects/Proxmox.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "tailscale-both-devices-connected"
+              "icon": "lucide-file",
+              "title": "Proxmox"
             }
           }
         ]
@@ -183,6 +185,7 @@
   },
   "active": "4aa935f6ec4544d6",
   "lastOpenFiles": [
+    "Screenshots/tailscale-both-devices-connected.png",
     "Troubleshooting/Proxmox Installation - USB Boot and Network Connectivity Issues.md",
     "Projects/Proxmox.md",
     "Daily Logs/2026-07-12.md",
@@ -192,7 +195,6 @@
     "Decisions/Tailscale Proxy Approach for Stremio-RD.md",
     "Decisions/Windows Practice VM - Left Unactivated.md",
     "Screenshots/windows11-activation-unable-reactivate.png",
-    "Screenshots/tailscale-both-devices-connected.png",
     "Screenshots/windows11-activation-error.md",
     "Screenshots/windows11-vm-config.md",
     "Screenshots/windows11-activation-unable-reactivate.md",
