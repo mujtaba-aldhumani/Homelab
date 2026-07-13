@@ -27,6 +27,9 @@ Status: Installed, unactivated (see [[Windows Practice VM - Left Unactivated]]),
 
 Specs: q35 machine, OVMF (UEFI), TPM v2.0, VirtIO SCSI disk (64GB), VirtIO NIC, 4096MB RAM, 2 cores.
 
+![[windows11-vm-config.png]]
+*Final hardware config before first boot.*
+
 ### Ubuntu Server / Tailscale Proxy (tailscaleproxy / VMID 101)
 
 Purpose: general remote access to home infrastructure, and a shared proxy so a Stremio + Real-Debrid setup can be used by multiple people via one funneled connection (see [[Tailscale Proxy Approach for Stremio-RD]]).
@@ -34,6 +37,9 @@ Purpose: general remote access to home infrastructure, and a shared proxy so a S
 Status: Installed, running. Static IP 192.168.86.201 (see [[Static IP over DHCP Reservation]]), Tailscale IP 100.74.175.81, hostname `tailscaleproxy`.
 
 Specs: SeaBIOS, i440fx machine, VirtIO SCSI disk (20GB), VirtIO NIC, 2048MB RAM, 1 core.
+
+![[tailscale-both-devices-connected.png]]
+*Ubuntu VM and Windows machine both joined to the same tailnet, connectivity confirmed via ping.*
 
 ### Windows Server (planned, not yet built)
 
