@@ -25,13 +25,11 @@
             "id": "9af7d2c63e558045",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Screenshots/tailscale-both-devices-connected.md",
-                "mode": "source",
-                "source": false
+                "file": "Screenshots/tailscale-both-devices-connected.png"
               },
-              "icon": "lucide-file",
+              "icon": "lucide-image",
               "title": "tailscale-both-devices-connected"
             }
           }
@@ -198,17 +196,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9af7d2c63e558045",
+  "active": "1d3a21ad28a1be7f",
   "lastOpenFiles": [
-    "Screenshots/windows11-vm-config.md",
     "Screenshots/windows11-activation-error.md",
-    "Screenshots/tailscale-both-devices-connected.png",
-    "Screenshots/windows11-activation-unable-reactivate.png",
-    "Screenshots/tailscale-both-devices-connected.md",
     "Screenshots/windows11-activation-unable-reactivate.md",
+    "Screenshots/windows11-vm-config.md",
+    "Screenshots/tailscale-both-devices-connected.md",
+    "Screenshots/tailscale-both-devices-connected.png",
+    "Screenshots/tailscale-both-devices-connected.png.png",
+    "Screenshots/windows11-activation-unable-reactivate.png",
     "Screenshots/windows11-vm-config.png",
     "Screenshots/windows11-activation-error.png",
-    "Screenshots/tailscale-both-devices-connected.png.png",
     "Screenshots/windows11-activation-unable-reactivate.png.png",
     "Screenshots/windows11-activation-error.png.png",
     "Screenshots/windows11-vm-config.png.png",
