@@ -185,6 +185,10 @@
   },
   "active": "4aa935f6ec4544d6",
   "lastOpenFiles": [
+    "Screenshots/windows11-activation-unable-reactivate.md",
+    "Screenshots/windows11-activation-error.md",
+    "Screenshots/windows11-vm-config.md",
+    "Screenshots/tailscale-both-devices-connected.md",
     "Decisions/Filesystem - ext4+LVM over ZFS.md",
     "Decisions/Tailscale Proxy Approach for Stremio-RD.md",
     "Decisions/Static IP over DHCP Reservation.md",
