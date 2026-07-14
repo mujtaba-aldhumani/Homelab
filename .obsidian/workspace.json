@@ -185,6 +185,9 @@
   },
   "active": "4aa935f6ec4544d6",
   "lastOpenFiles": [
+    "Troubleshooting/Stremio Has No Native Proxy Support.md",
+    "Troubleshooting/IP Forwarding Not Persisting After Reboot.md",
+    "Decisions/SSH over Proxmox Console for Linux VM Management.md",
     "Decisions/Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD.md",
     "Decisions/Windows Practice VM - Left Unactivated.md",
     "Decisions/Filesystem - ext4+LVM over ZFS.md",
