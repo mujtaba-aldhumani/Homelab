@@ -20,4 +20,4 @@ Even with all Stremio/RD traffic funneled through one IP, Real-Debrid may also t
 
 ## Status
 
-Ubuntu VM and Tailscale connectivity are set up and confirmed working. The actual proxy service (SOCKS5/HTTP) has not yet been installed/configured — planned as a next step.
+**Superseded on 2026-07-13** — see [[Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD]] for the revised decision and reasoning. Dante was fully installed and confirmed working (SOCKS5 proxy, dedicated no-shell auth user), but Stremio turned out to have no native proxy support, and the actual requirement narrowed to two specific devices — both of which support Tailscale's exit-node feature natively. Dante remains installed on the VM in case a broader multi-user shared-proxy need comes up later.
