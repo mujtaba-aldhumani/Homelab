@@ -96,7 +96,7 @@ Proxmox installed and running. Two VMs built (Windows 11 practice VM, Ubuntu Tai
 - Confirmed working connectivity between both devices over Tailscale (ping test successful)
 - Clarified requirement for the Stremio/RD use case — see [[Tailscale Proxy Approach for Stremio-RD]]
 
-### 2026-07-13/14
+### 2026-07-13
 
 - Corrected 2026-07-12 log: the Windows Tailscale device was the personal laptop, not the Windows 11 practice VM; joined the Windows 11 VM to the tailnet separately (100.76.5.113)
 - Set up Tailscale subnet routing so the whole home LAN (192.168.86.0/24) is reachable remotely, not just individually-joined devices — see [[2026-07-13]] for full walkthrough
