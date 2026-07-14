@@ -51,7 +51,7 @@ Purpose:
 
 ## Status
 
-Proxmox installed and running. Two VMs built (Windows 11 practice VM, Ubuntu Tailscale proxy VM). Tailscale connectivity confirmed working between the Ubuntu VM and the Windows management machine.
+Proxmox installed and running. Two VMs built (Windows 11 practice VM, Ubuntu Tailscale proxy VM), both now joined to the tailnet. Tailscale subnet routing (whole home LAN reachable remotely) and exit node (for sharing the home IP with specific outside devices) both configured and confirmed working on `tailscaleproxy`.
 
 ## Related Decisions
 
@@ -59,7 +59,8 @@ Proxmox installed and running. Two VMs built (Windows 11 practice VM, Ubuntu Tai
 - [[Static IP over DHCP Reservation]]
 - [[Claude Desktop - Filesystem MCP over Code Tab]]
 - [[Windows Practice VM - Left Unactivated]]
-- [[Tailscale Proxy Approach for Stremio-RD]]
+- [[Tailscale Proxy Approach for Stremio-RD]] (superseded)
+- [[Tailscale Exit Node over Dante Proxy for Stremio-RD]]
 - [[Vault Separation - Homelab vs Life]]
 
 ## Project Log
@@ -90,13 +91,21 @@ Proxmox installed and running. Two VMs built (Windows 11 practice VM, Ubuntu Tai
 - Set up Claude Desktop filesystem MCP integration to read/write directly into this vault (see [[Claude Desktop - Filesystem MCP over Code Tab]])
 - Built Windows 11 practice VM (VMID 100) — see [[2026-07-12]] for full detail on driver loading, activation issue, and backup restore; activation decision in [[Windows Practice VM - Left Unactivated]]
 - Built Ubuntu Server VM (VMID 101) for Tailscale — static IP 192.168.86.201
-- Installed and authenticated Tailscale on the Ubuntu VM and on the Windows management machine, joining both to the same tailnet
+- Installed and authenticated Tailscale on the Ubuntu VM and on the personal laptop, joining both to the same tailnet
 - Confirmed working connectivity between both devices over Tailscale (ping test successful)
 - Clarified requirement for the Stremio/RD use case — see [[Tailscale Proxy Approach for Stremio-RD]]
 
+### 2026-07-13/14
+
+- Corrected 2026-07-12 log: the Windows Tailscale device was the personal laptop, not the Windows 11 practice VM; joined the Windows 11 VM to the tailnet separately (100.76.5.113)
+- Set up Tailscale subnet routing so the whole home LAN (192.168.86.0/24) is reachable remotely, not just individually-joined devices — see [[2026-07-13]] for full walkthrough
+- Installed and configured Dante SOCKS5 proxy on `tailscaleproxy`, confirmed working via external curl test — later superseded for the Stremio/RD use case, see [[Tailscale Exit Node over Dante Proxy for Stremio-RD]]
+- Discovered Stremio has no native proxy support; re-scoped the Stremio/RD sharing requirement to two specific devices and switched to Tailscale's exit-node feature instead
+- Advertised and approved `tailscaleproxy` as a Tailscale exit node
+- Ran into and resolved several troubleshooting issues along the way — see [[Tailscale IP Forwarding Not Persisted After Reboot]] and [[PowerShell curl Alias and SSH Console Paste Issues]]
+
 ## Next Steps
 
-1. Install and configure a SOCKS5/HTTP proxy service on the Ubuntu Tailscale VM
-2. Point Stremio's proxy settings at the VM's Tailscale IP
-3. Add friends' devices to the tailnet so they can reach the proxy remotely
-4. Continue toward planned roadmap: Docker → Active Directory → Monitoring → Wazuh
+1. Install Tailscale on the brother's Google TV and personal iPhone, and use `tailscaleproxy` as their exit node
+2. Revisit Dante/a debrid-proxy addon later if a broader (non-two-person) shared-proxy setup is wanted
+3. Continue toward planned roadmap: Docker → Active Directory → Monitoring → Wazuh

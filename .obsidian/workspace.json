@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Projects/Proxmox.md",
+                "file": "Daily Logs/2026-07-13.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Proxmox"
+              "title": "2026-07-13"
             }
           }
         ]
@@ -185,6 +185,7 @@
   },
   "active": "4aa935f6ec4544d6",
   "lastOpenFiles": [
+    "Projects/Proxmox.md",
     "Decisions/Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD.md",
     "Troubleshooting/Stremio Has No Native Proxy Support.md",
     "Daily Logs/2026-07-13.md",
@@ -196,7 +197,6 @@
     "Daily Logs/2026-07-12.md",
     "Daily Logs/2026-07-13.md.e4d01e4ea5900cae3a6245e05f0337fa.tmp",
     "Daily Logs/2026-07-14.md",
-    "Projects/Proxmox.md",
     "Screenshots/tailscale-both-devices-connected.png",
     "Troubleshooting/Proxmox Installation - USB Boot and Network Connectivity Issues.md",
     "Decisions/Vault Separation - Homelab vs Life.md",
