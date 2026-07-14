@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Logs/2026-07-13.md",
+                "file": "Troubleshooting/Stremio Has No Native Proxy Support.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-07-13"
+              "title": "Stremio Has No Native Proxy Support"
             }
           }
         ]
@@ -185,11 +185,11 @@
   },
   "active": "4aa935f6ec4544d6",
   "lastOpenFiles": [
+    "Decisions/SSH over Proxmox Console for Linux VM Management.md",
+    "Daily Logs/2026-07-13.md",
     "Projects/Proxmox.md",
     "Decisions/Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD.md",
     "Troubleshooting/Stremio Has No Native Proxy Support.md",
-    "Daily Logs/2026-07-13.md",
-    "Decisions/SSH over Proxmox Console for Linux VM Management.md",
     "Decisions/Tailscale Proxy Approach for Stremio-RD.md",
     "Troubleshooting/IP Forwarding Not Persisting After Reboot.md",
     "Decisions/Windows Practice VM - Left Unactivated.md",

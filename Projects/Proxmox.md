@@ -32,7 +32,7 @@ Specs: q35 machine, OVMF (UEFI), TPM v2.0, VirtIO SCSI disk (64GB), VirtIO NIC, 
 
 ### Ubuntu Server / Tailscale Proxy (tailscaleproxy / VMID 101)
 
-Purpose: general remote access to home infrastructure (subnet router), and an exit node so specific devices (brother's Google TV, personal iPhone) can share the home IP for a Stremio + Real-Debrid setup (see [[Tailscale Exit Node over Dante Proxy for Stremio-RD]], supersedes [[Tailscale Proxy Approach for Stremio-RD]]).
+Purpose: general remote access to home infrastructure (subnet router), and an exit node so specific devices (brother's Google TV, personal iPhone) can share the home IP for a Stremio + Real-Debrid setup (see [[Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD]], supersedes [[Tailscale Proxy Approach for Stremio-RD]]).
 
 Status: Installed, running. Static IP 192.168.86.201 (see [[Static IP over DHCP Reservation]]), Tailscale IP 100.74.175.81, hostname `tailscaleproxy`. Advertised and approved as both a subnet router (192.168.86.0/24) and an exit node. Dante SOCKS5 proxy also installed and confirmed working (port 1080), though not the path currently used for Stremio sharing.
 
@@ -60,7 +60,8 @@ Proxmox installed and running. Two VMs built (Windows 11 practice VM, Ubuntu Tai
 - [[Claude Desktop - Filesystem MCP over Code Tab]]
 - [[Windows Practice VM - Left Unactivated]]
 - [[Tailscale Proxy Approach for Stremio-RD]] (superseded)
-- [[Tailscale Exit Node over Dante Proxy for Stremio-RD]]
+- [[Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD]]
+- [[SSH over Proxmox Console for Linux VM Management]]
 - [[Vault Separation - Homelab vs Life]]
 
 ## Project Log
@@ -99,10 +100,10 @@ Proxmox installed and running. Two VMs built (Windows 11 practice VM, Ubuntu Tai
 
 - Corrected 2026-07-12 log: the Windows Tailscale device was the personal laptop, not the Windows 11 practice VM; joined the Windows 11 VM to the tailnet separately (100.76.5.113)
 - Set up Tailscale subnet routing so the whole home LAN (192.168.86.0/24) is reachable remotely, not just individually-joined devices — see [[2026-07-13]] for full walkthrough
-- Installed and configured Dante SOCKS5 proxy on `tailscaleproxy`, confirmed working via external curl test — later superseded for the Stremio/RD use case, see [[Tailscale Exit Node over Dante Proxy for Stremio-RD]]
+- Installed and configured Dante SOCKS5 proxy on `tailscaleproxy`, confirmed working via external curl test — later superseded for the Stremio/RD use case, see [[Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD]]
 - Discovered Stremio has no native proxy support; re-scoped the Stremio/RD sharing requirement to two specific devices and switched to Tailscale's exit-node feature instead
 - Advertised and approved `tailscaleproxy` as a Tailscale exit node
-- Ran into and resolved several troubleshooting issues along the way — see [[Tailscale IP Forwarding Not Persisted After Reboot]] and [[PowerShell curl Alias and SSH Console Paste Issues]]
+- Ran into and resolved several troubleshooting issues along the way — see [[IP Forwarding Not Persisting After Reboot]] and [[Stremio Has No Native Proxy Support]]
 
 ## Next Steps
 
