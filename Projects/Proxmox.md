@@ -32,9 +32,9 @@ Specs: q35 machine, OVMF (UEFI), TPM v2.0, VirtIO SCSI disk (64GB), VirtIO NIC, 
 
 ### Ubuntu Server / Tailscale Proxy (tailscaleproxy / VMID 101)
 
-Purpose: general remote access to home infrastructure, and a shared proxy so a Stremio + Real-Debrid setup can be used by multiple people via one funneled connection (see [[Tailscale Proxy Approach for Stremio-RD]]).
+Purpose: general remote access to home infrastructure (subnet router), and an exit node so specific devices (brother's Google TV, personal iPhone) can share the home IP for a Stremio + Real-Debrid setup (see [[Tailscale Exit Node over Dante Proxy for Stremio-RD]], supersedes [[Tailscale Proxy Approach for Stremio-RD]]).
 
-Status: Installed, running. Static IP 192.168.86.201 (see [[Static IP over DHCP Reservation]]), Tailscale IP 100.74.175.81, hostname `tailscaleproxy`.
+Status: Installed, running. Static IP 192.168.86.201 (see [[Static IP over DHCP Reservation]]), Tailscale IP 100.74.175.81, hostname `tailscaleproxy`. Advertised and approved as both a subnet router (192.168.86.0/24) and an exit node. Dante SOCKS5 proxy also installed and confirmed working (port 1080), though not the path currently used for Stremio sharing.
 
 Specs: SeaBIOS, i440fx machine, VirtIO SCSI disk (20GB), VirtIO NIC, 2048MB RAM, 1 core.
 
