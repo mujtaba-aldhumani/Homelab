@@ -49,6 +49,18 @@ Purpose:
 - DNS
 - Group Policy
 
+## LXC Containers
+
+### Pi-hole (pihole / VMID 102)
+
+Purpose: network-wide DNS-based ad blocking for the home network. Built via Proxmox Community Scripts rather than manual `pct create` (see [[Proxmox Community Scripts over Manual LXC Creation for Pi-hole]]).
+
+Status: Installed, running, verified end-to-end (`pihole status`, admin dashboard reachable and logged into). Blocklist populated automatically during install (StevenBlack/hosts, ~76,000 domains). Not yet handling network-wide traffic — DHCP/DNS on the home router (Google Wifi) still needs to be pointed at it; blocked on the brother's Google account access, see Status below. Declined the installer's optional Unbound add-on for now (see [[Unbound Deferred as a Separate Follow-Up Project]]).
+
+Specs: Unprivileged LXC, Debian 13, 1 core, 512MB RAM, 2GB disk, static IP 192.168.86.202/24 (see [[Static IP over DHCP Reservation]]), gateway 192.168.86.1, IPv6 disabled, FUSE and TUN/TAP both disabled.
+
+Full build/troubleshooting detail: [Daily Log — 2026-07-14](../Daily%20Logs/2026-07-14.md).
+
 ## Status
 
 Proxmox installed and running. Two VMs built (Windows 11 practice VM, Ubuntu Tailscale proxy VM), both now joined to the tailnet. Tailscale subnet routing (whole home LAN reachable remotely) and exit node (for sharing the home IP with specific outside devices) both configured and confirmed working on `tailscaleproxy`.
@@ -63,6 +75,8 @@ Proxmox installed and running. Two VMs built (Windows 11 practice VM, Ubuntu Tai
 - [[Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD]]
 - [[SSH over Proxmox Console for Linux VM Management]]
 - [[Vault Separation - Homelab vs Life]]
+- [[Proxmox Community Scripts over Manual LXC Creation for Pi-hole]]
+- [[Unbound Deferred as a Separate Follow-Up Project]]
 
 ## Project Log
 
@@ -105,8 +119,18 @@ Proxmox installed and running. Two VMs built (Windows 11 practice VM, Ubuntu Tai
 - Advertised and approved `tailscaleproxy` as a Tailscale exit node
 - Ran into and resolved several troubleshooting issues along the way — see [[IP Forwarding Not Persisting After Reboot]] and [[Stremio Has No Native Proxy Support]]
 
+### 2026-07-14
+
+- Built Pi-hole LXC (VMID 102) for network-wide ad blocking, via Proxmox Community Scripts (see [[Proxmox Community Scripts over Manual LXC Creation for Pi-hole]])
+- Hit and resolved several unrelated tooling issues along the way — see [Daily Log — 2026-07-14](../Daily%20Logs/2026-07-14.md) for the full walkthrough, or individually: [[Bracketed-Paste Corruption in Proxmox noVNC Console]], [[QuickEdit Mode and noVNC Selection Freezing Console Input]], [[raw.githubusercontent.com Intermittent DNS Resolution Failures]], [[Piped Install Script Swallowing Interactive Confirmation Prompt]], [[pct exec Not Resolving Binary via PATH]]
+- Confirmed Pi-hole installed, running, and reachable at `http://192.168.86.202/admin`; admin password set
+- Declined the installer's optional Unbound add-on for now (see [[Unbound Deferred as a Separate Follow-Up Project]])
+- Network-wide DNS switch blocked on brother's Google Wifi/Google Home account access (network is under his account; he's currently out of town, but this can be granted remotely — doesn't require him to be home)
+
 ## Next Steps
 
 1. Install Tailscale on the brother's Google TV and personal iPhone, and use `tailscaleproxy` as their exit node
 2. Revisit Dante/a debrid-proxy addon later if a broader (non-two-person) shared-proxy setup is wanted
-3. Continue toward planned roadmap: Docker → Active Directory → Monitoring → Wazuh
+3. Get added as a Home Member (Admin) on the Google Wifi network, then set its custom DNS to `192.168.86.202` to make Pi-hole network-wide
+4. Revisit Unbound for Pi-hole once the base DNS setup is proven stable (see [[Unbound Deferred as a Separate Follow-Up Project]])
+5. Continue toward planned roadmap: Docker → Active Directory → Monitoring → Wazuh
