@@ -185,6 +185,8 @@
   },
   "active": "c8611a0be07f98fb",
   "lastOpenFiles": [
+    "Troubleshooting/QuickEdit Mode and noVNC Selection Freezing Console Input.md",
+    "Troubleshooting/Bracketed-Paste Corruption in Proxmox noVNC Console.md",
     "Decisions/SSH over Proxmox Console for Linux VM Management.md",
     "Projects/Proxmox.md",
     "Daily Logs/2026-07-14.md",
@@ -218,8 +220,6 @@
     "Daily Logs/2026-07-11.md",
     "Daily Logs/Test.md",
     "Daily Logs/2026-06-03.md",
-    "Troubleshooting/Git Synchronization and Merge Conflict Troubleshooting.md",
-    "conflict-files-obsidian-git.md",
     "Troubleshooting",
     "Templates",
     "Screenshots",
