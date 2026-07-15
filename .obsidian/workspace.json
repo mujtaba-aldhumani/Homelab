@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Decisions/SSH over Proxmox Console for Linux VM Management.md",
+                "file": "Troubleshooting/Piped Install Script Swallowing Interactive Confirmation Prompt.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SSH over Proxmox Console for Linux VM Management"
+              "title": "Piped Install Script Swallowing Interactive Confirmation Prompt"
             }
           }
         ]
@@ -185,8 +185,8 @@
   },
   "active": "c8611a0be07f98fb",
   "lastOpenFiles": [
-    "Projects/Proxmox.md",
     "Decisions/SSH over Proxmox Console for Linux VM Management.md",
+    "Projects/Proxmox.md",
     "Daily Logs/2026-07-14.md",
     "Decisions/Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD.md",
     "Troubleshooting/Piped Install Script Swallowing Interactive Confirmation Prompt.md",
