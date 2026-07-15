@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Logs/2026-07-1.md",
+                "file": "Daily Logs/2026-07-13.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-07-1"
+              "title": "2026-07-13"
             }
           }
         ]
@@ -183,10 +183,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1d3a21ad28a1be7f",
+  "active": "c8611a0be07f98fb",
   "lastOpenFiles": [
+    "Daily Logs/2026-07-14.md",
+    "Daily Logs/2026-06-03.md",
+    "Daily Logs/2026-07-12.md",
     "Daily Logs/2026-07-13.md",
-    "Daily Logs/2026-07-1.md",
     "Daily Logs/README.md",
     "Troubleshooting/Piped Install Script Swallowing Interactive Confirmation Prompt.md",
     "Decisions/Unbound Deferred as a Separate Follow-Up Project.md",
@@ -206,14 +208,12 @@
     "Troubleshooting/IP Forwarding Not Persisting After Reboot.md",
     "Decisions/Windows Practice VM - Left Unactivated.md",
     "Decisions/Filesystem - ext4+LVM over ZFS.md",
-    "Daily Logs/2026-07-12.md",
     "Daily Logs/2026-07-13.md.e4d01e4ea5900cae3a6245e05f0337fa.tmp",
     "Screenshots/tailscale-both-devices-connected.png",
     "Troubleshooting/Proxmox Installation - USB Boot and Network Connectivity Issues.md",
     "Decisions/Vault Separation - Homelab vs Life.md",
     "Decisions/Claude Desktop - Filesystem MCP over Code Tab.md",
     "Screenshots/windows11-activation-error.md",
-    "Screenshots/windows11-vm-config.md",
     "Screenshots/tailscale-both-devices-connected.png.png",
     "Screenshots/windows11-vm-config.png",
     "Screenshots/windows11-activation-error.png",
