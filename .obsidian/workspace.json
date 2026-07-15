@@ -185,6 +185,7 @@
   },
   "active": "c8611a0be07f98fb",
   "lastOpenFiles": [
+    "Daily Logs/README.md",
     "Troubleshooting/Piped Install Script Swallowing Interactive Confirmation Prompt.md",
     "Decisions/Unbound Deferred as a Separate Follow-Up Project.md",
     "Decisions/Proxmox Community Scripts over Manual LXC Creation for Pi-hole.md",
@@ -213,7 +214,6 @@
     "Decisions/Claude Desktop - Filesystem MCP over Code Tab.md",
     "Screenshots/windows11-activation-error.md",
     "Screenshots/windows11-vm-config.md",
-    "Screenshots/windows11-activation-unable-reactivate.md",
     "Screenshots/tailscale-both-devices-connected.png.png",
     "Screenshots/windows11-vm-config.png",
     "Screenshots/windows11-activation-error.png",

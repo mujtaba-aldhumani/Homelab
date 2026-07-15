@@ -14,8 +14,8 @@ Unbound is a genuinely valuable upgrade — better DNS privacy (no single upstre
 
 ## Status
 
-Deferred, not rejected. Planned as a deliberate future project once the core Pi-hole setup is proven stable and the network-wide DNS switch (see [[Proxmox]]) is confirmed working.
+Deferred, not rejected. Planned as a deliberate future project once the core Pi-hole setup is proven stable and the network-wide DNS switch (see [Proxmox](../Projects/Proxmox.md)) is confirmed working.
 
 ## Related
 
-- [[Proxmox]]
+- [Proxmox](../Projects/Proxmox.md)
