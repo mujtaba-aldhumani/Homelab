@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Logs/2026-07-13.md",
+                "file": "Daily Logs/2026-07-1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-07-13"
+              "title": "2026-07-1"
             }
           }
         ]
@@ -183,9 +183,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c8611a0be07f98fb",
+  "active": "1d3a21ad28a1be7f",
   "lastOpenFiles": [
-    "Daily Logs/2026-07-14.md",
+    "Daily Logs/2026-07-13.md",
+    "Daily Logs/2026-07-1.md",
     "Daily Logs/README.md",
     "Troubleshooting/Piped Install Script Swallowing Interactive Confirmation Prompt.md",
     "Decisions/Unbound Deferred as a Separate Follow-Up Project.md",
@@ -200,7 +201,6 @@
     "Decisions/Static IP over DHCP Reservation.md",
     "Screenshots/windows11-activation-unable-reactivate.png",
     "Daily Logs/2026-07-15.md",
-    "Daily Logs/2026-07-13.md",
     "Troubleshooting/Stremio Has No Native Proxy Support.md",
     "Decisions/Tailscale Proxy Approach for Stremio-RD.md",
     "Troubleshooting/IP Forwarding Not Persisting After Reboot.md",
