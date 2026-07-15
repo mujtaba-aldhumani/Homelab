@@ -185,6 +185,8 @@
   },
   "active": "c8611a0be07f98fb",
   "lastOpenFiles": [
+    "Troubleshooting/Piped Install Script Swallowing Interactive Confirmation Prompt.md",
+    "Daily Logs/2026-07-14.md",
     "Decisions/SSH over Proxmox Console for Linux VM Management.md",
     "Decisions/Static IP over DHCP Reservation.md",
     "Screenshots/windows11-activation-unable-reactivate.png",
@@ -222,7 +224,6 @@
     "Templates",
     "Screenshots",
     "Decisions",
-    "Welcome.md",
     "Templates",
     "Screenshots",
     "Decisions",
