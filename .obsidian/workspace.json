@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Logs/2026-07-14.md",
+                "file": "Daily Logs/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-07-14"
+              "title": "README"
             }
           }
         ]
@@ -185,6 +185,7 @@
   },
   "active": "c8611a0be07f98fb",
   "lastOpenFiles": [
+    "Daily Logs/2026-07-14.md",
     "Daily Logs/README.md",
     "Troubleshooting/Piped Install Script Swallowing Interactive Confirmation Prompt.md",
     "Decisions/Unbound Deferred as a Separate Follow-Up Project.md",
@@ -195,7 +196,6 @@
     "Troubleshooting/Bracketed-Paste Corruption in Proxmox noVNC Console.md",
     "Decisions/SSH over Proxmox Console for Linux VM Management.md",
     "Projects/Proxmox.md",
-    "Daily Logs/2026-07-14.md",
     "Decisions/Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD.md",
     "Decisions/Static IP over DHCP Reservation.md",
     "Screenshots/windows11-activation-unable-reactivate.png",
