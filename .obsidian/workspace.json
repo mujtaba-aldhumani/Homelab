@@ -185,6 +185,7 @@
   },
   "active": "c8611a0be07f98fb",
   "lastOpenFiles": [
+    "CLAUDE.md",
     "Daily Logs/2026-07-11.md",
     "Daily Logs/2026-07-13.md",
     "Daily Logs/2026-07-12.md",
@@ -213,7 +214,6 @@
     "Screenshots/tailscale-both-devices-connected.png",
     "Troubleshooting/Proxmox Installation - USB Boot and Network Connectivity Issues.md",
     "Decisions/Vault Separation - Homelab vs Life.md",
-    "Decisions/Claude Desktop - Filesystem MCP over Code Tab.md",
     "Screenshots/tailscale-both-devices-connected.png.png",
     "Screenshots/windows11-vm-config.png",
     "Screenshots/windows11-activation-error.png",
