@@ -20,4 +20,4 @@ Even with all Stremio/RD traffic funneled through one IP, Real-Debrid may also t
 
 ## Status
 
-**Superseded on 2026-07-13** — see [[Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD]] for the revised decision and reasoning. Dante was fully installed and confirmed working (SOCKS5 proxy, dedicated no-shell auth user), but Stremio turned out to have no native proxy support, and the actual requirement narrowed to two specific devices — both of which support Tailscale's exit-node feature natively. Dante remains installed on the VM in case a broader multi-user shared-proxy need comes up later.
+**Superseded on 2026-07-13** — see [Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD](Tailscale%20Exit%20Node%20over%20SOCKS5%20Proxy%20for%20Stremio-RD.md) for the revised decision and reasoning. Dante was fully installed and confirmed working (SOCKS5 proxy, dedicated no-shell auth user), but Stremio turned out to have no native proxy support, and the actual requirement narrowed to two specific devices — both of which support Tailscale's exit-node feature natively. Dante remains installed on the VM in case a broader multi-user shared-proxy need comes up later.

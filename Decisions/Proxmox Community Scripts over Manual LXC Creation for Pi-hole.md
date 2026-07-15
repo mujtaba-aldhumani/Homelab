@@ -22,4 +22,4 @@ Adopted for the Pi-hole build (LXC VMID 102). Manual `pct create` workflows rema
 
 ## Related
 
-- [[Proxmox]]
+- [Proxmox](../Projects/Proxmox.md)

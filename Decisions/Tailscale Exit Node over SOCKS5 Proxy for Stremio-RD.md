@@ -2,7 +2,7 @@ Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD
 
 ## Decision
 
-Use Tailscale's built-in exit-node feature on the brother's Google TV and personal iPhone, rather than the previously-built Dante SOCKS5 proxy ([[Tailscale Proxy Approach for Stremio-RD]]), to share the home IP for the Stremio + Real-Debrid use case.
+Use Tailscale's built-in exit-node feature on the brother's Google TV and personal iPhone, rather than the previously-built Dante SOCKS5 proxy ([Tailscale Proxy Approach for Stremio-RD](Tailscale%20Proxy%20Approach%20for%20Stremio-RD.md)), to share the home IP for the Stremio + Real-Debrid use case.
 
 ## Context
 
@@ -28,4 +28,4 @@ Real-Debrid may track concurrent stream count per account independent of IP addr
 
 ## Status
 
-`tailscaleproxy` VM advertised and approved as both a subnet router and an exit node. Dante remains installed and functional on the VM as a fallback if a broader (non-two-person) shared-proxy need comes up later — see [[Tailscale Proxy Approach for Stremio-RD]] for that original setup.
+`tailscaleproxy` VM advertised and approved as both a subnet router and an exit node. Dante remains installed and functional on the VM as a fallback if a broader (non-two-person) shared-proxy need comes up later — see [Tailscale Proxy Approach for Stremio-RD](Tailscale%20Proxy%20Approach%20for%20Stremio-RD.md) for that original setup.

@@ -18,7 +18,7 @@ Incorrect initial assumption that Stremio had proxy configuration in its setting
 
 ## Resolution
 
-Since routing Stremio's own app traffic through Dante isn't possible without extra tooling that doesn't work on a TV app anyway, re-scoped the actual goal: rather than proxy the app, proxy the underlying debrid stream URL (via an addon like Comet or MediaFlow Proxy) — or, simpler still, use Tailscale's exit-node feature at the OS level once the real requirement turned out to be just two specific devices rather than an open-ended group. See [[Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD]] for the follow-up decision.
+Since routing Stremio's own app traffic through Dante isn't possible without extra tooling that doesn't work on a TV app anyway, re-scoped the actual goal: rather than proxy the app, proxy the underlying debrid stream URL (via an addon like Comet or MediaFlow Proxy) — or, simpler still, use Tailscale's exit-node feature at the OS level once the real requirement turned out to be just two specific devices rather than an open-ended group. See [Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD](../Decisions/Tailscale%20Exit%20Node%20over%20SOCKS5%20Proxy%20for%20Stremio-RD.md) for the follow-up decision.
 
 ## Takeaway
 
