@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CLAUDE.md",
+                "file": "Daily Logs/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CLAUDE"
+              "title": "README"
             }
           }
         ]
@@ -185,10 +185,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c8611a0be07f98fb",
+  "active": "1d3a21ad28a1be7f",
   "lastOpenFiles": [
-    "Daily Logs/2026-07-14.md",
+    "Daily Logs/2026-08-26.md",
     "CLAUDE.md",
+    "Daily Logs/2026-08-26.md.28996503039e82f293694aa5e872b6fb.tmp",
+    "Daily Logs/2026-07-14.md",
     "Daily Logs/2026-07-11.md",
     "Daily Logs/2026-07-13.md",
     "Daily Logs/2026-07-12.md",
@@ -215,7 +217,6 @@
     "Daily Logs/2026-07-13.md.e4d01e4ea5900cae3a6245e05f0337fa.tmp",
     "Screenshots/tailscale-both-devices-connected.png",
     "Troubleshooting/Proxmox Installation - USB Boot and Network Connectivity Issues.md",
-    "Decisions/Vault Separation - Homelab vs Life.md",
     "Screenshots/tailscale-both-devices-connected.png.png",
     "Screenshots/windows11-vm-config.png",
     "Screenshots/windows11-activation-error.png",
@@ -229,7 +230,6 @@
     "Templates",
     "Screenshots",
     "Decisions",
-    "Troubleshooting",
-    "Projects"
+    "Troubleshooting"
   ]
 }
