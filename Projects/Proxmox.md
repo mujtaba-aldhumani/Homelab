@@ -55,7 +55,7 @@ Purpose:
 
 Purpose: network-wide DNS-based ad blocking for the home network. Built via Proxmox Community Scripts rather than manual `pct create` (see [Proxmox Community Scripts over Manual LXC Creation for Pi-hole](../Decisions/Proxmox%20Community%20Scripts%20over%20Manual%20LXC%20Creation%20for%20Pi-hole.md)).
 
-Status: Installed, running, verified end-to-end (`pihole status`, admin dashboard reachable and logged into). Blocklist populated automatically during install (StevenBlack/hosts, ~76,000 domains). Not yet handling network-wide traffic — DHCP/DNS on the home router (Google Wifi) still needs to be pointed at it; blocked on the brother's Google account access, see Status below. Declined the installer's optional Unbound add-on for now (see [Unbound Deferred as a Separate Follow-Up Project](../Decisions/Unbound%20Deferred%20as%20a%20Separate%20Follow-Up%20Project.md)).
+Status: Installed, running, and now handling DNS network-wide — Google Wifi's DNS was pointed at `192.168.86.202` (see [8.8.4.4 Secondary DNS over Blank Fallback for Pi-hole](../Decisions/8.8.4.4%20Secondary%20DNS%20over%20Blank%20Fallback%20for%20Pi-hole.md), [Disabling IPv6 over Public IPv6 DNS Fallback for Google Wifi Custom DNS](../Decisions/Disabling%20IPv6%20over%20Public%20IPv6%20DNS%20Fallback%20for%20Google%20Wifi%20Custom%20DNS.md)). Verified working both on the home LAN and remotely via the Tailscale exit node, after resolving a DNS-override gap in Tailscale's settings (see [Daily Log — 2026-08-26](../Daily%20Logs/2026-08-26.md)). Blocklist populated automatically during install (StevenBlack/hosts, ~76,000 domains). Declined the installer's optional Unbound add-on for now (see [Unbound Deferred as a Separate Follow-Up Project](../Decisions/Unbound%20Deferred%20as%20a%20Separate%20Follow-Up%20Project.md)).
 
 Specs: Unprivileged LXC, Debian 13, 1 core, 512MB RAM, 2GB disk, static IP 192.168.86.202/24 (see [Static IP over DHCP Reservation](../Decisions/Static%20IP%20over%20DHCP%20Reservation.md)), gateway 192.168.86.1, IPv6 disabled, FUSE and TUN/TAP both disabled.
 
@@ -63,7 +63,7 @@ Full build/troubleshooting detail: [Daily Log — 2026-07-14](../Daily%20Logs/20
 
 ## Status
 
-Proxmox installed and running. Two VMs built (Windows 11 practice VM, Ubuntu Tailscale proxy VM), both now joined to the tailnet. Tailscale subnet routing (whole home LAN reachable remotely) and exit node (for sharing the home IP with specific outside devices) both configured and confirmed working on `tailscaleproxy`.
+Proxmox installed and running. Two VMs built (Windows 11 practice VM, Ubuntu Tailscale proxy VM), both now joined to the tailnet. Tailscale subnet routing (whole home LAN reachable remotely) and exit node (for sharing the home IP with specific outside devices) both configured and confirmed working on `tailscaleproxy`. Pi-hole LXC is fully deployed and handling DNS-based ad blocking for the entire home network, verified both locally and remotely.
 
 ## Related Decisions
 
@@ -77,6 +77,8 @@ Proxmox installed and running. Two VMs built (Windows 11 practice VM, Ubuntu Tai
 - [Vault Separation - Homelab vs Life](../Decisions/Vault%20Separation%20-%20Homelab%20vs%20Life.md)
 - [Proxmox Community Scripts over Manual LXC Creation for Pi-hole](../Decisions/Proxmox%20Community%20Scripts%20over%20Manual%20LXC%20Creation%20for%20Pi-hole.md)
 - [Unbound Deferred as a Separate Follow-Up Project](../Decisions/Unbound%20Deferred%20as%20a%20Separate%20Follow-Up%20Project.md)
+- [8.8.4.4 Secondary DNS over Blank Fallback for Pi-hole](../Decisions/8.8.4.4%20Secondary%20DNS%20over%20Blank%20Fallback%20for%20Pi-hole.md)
+- [Disabling IPv6 over Public IPv6 DNS Fallback for Google Wifi Custom DNS](../Decisions/Disabling%20IPv6%20over%20Public%20IPv6%20DNS%20Fallback%20for%20Google%20Wifi%20Custom%20DNS.md)
 
 ## Project Log
 
@@ -127,10 +129,16 @@ Proxmox installed and running. Two VMs built (Windows 11 practice VM, Ubuntu Tai
 - Declined the installer's optional Unbound add-on for now (see [Unbound Deferred as a Separate Follow-Up Project](../Decisions/Unbound%20Deferred%20as%20a%20Separate%20Follow-Up%20Project.md))
 - Network-wide DNS switch blocked on brother's Google Wifi/Google Home account access (network is under his account; he's currently out of town, but this can be granted remotely — doesn't require him to be home)
 
+### 2026-08-26
+
+- Got Google Wifi/Google Home admin access from brother; pointed the network's primary DNS at `192.168.86.202`, kept `8.8.4.4` as secondary (see [8.8.4.4 Secondary DNS over Blank Fallback for Pi-hole](../Decisions/8.8.4.4%20Secondary%20DNS%20over%20Blank%20Fallback%20for%20Pi-hole.md)), and disabled IPv6 on the network to close an IPv6 DNS bypass path (see [Disabling IPv6 over Public IPv6 DNS Fallback for Google Wifi Custom DNS](../Decisions/Disabling%20IPv6%20over%20Public%20IPv6%20DNS%20Fallback%20for%20Google%20Wifi%20Custom%20DNS.md))
+- Ran into and resolved two testing issues — see [Daily Log — 2026-08-26](../Daily%20Logs/2026-08-26.md) for the full walkthrough, or individually: [DNS-Level Blocking Ineffective Against Streaming-Site Popup and Redirect Ads](../Troubleshooting/DNS-Level%20Blocking%20Ineffective%20Against%20Streaming-Site%20Popup%20and%20Redirect%20Ads.md), [Tailscale Exit Node Not Overriding Client DNS to Pi-hole](../Troubleshooting/Tailscale%20Exit%20Node%20Not%20Overriding%20Client%20DNS%20to%20Pi-hole.md)
+- Confirmed Pi-hole network-wide ad blocking working both on the home LAN and remotely via the Tailscale exit node — Pi-hole project complete
+
 ## Next Steps
 
 1. Install Tailscale on the brother's Google TV and personal iPhone, and use `tailscaleproxy` as their exit node
 2. Revisit Dante/a debrid-proxy addon later if a broader (non-two-person) shared-proxy setup is wanted
-3. Get added as a Home Member (Admin) on the Google Wifi network, then set its custom DNS to `192.168.86.202` to make Pi-hole network-wide
-4. Revisit Unbound for Pi-hole once the base DNS setup is proven stable (see [Unbound Deferred as a Separate Follow-Up Project](../Decisions/Unbound%20Deferred%20as%20a%20Separate%20Follow-Up%20Project.md))
-5. Continue toward planned roadmap: Docker → Active Directory → Monitoring → Wazuh
+3. Revisit Unbound for Pi-hole as a smaller follow-up project (see [Unbound Deferred as a Separate Follow-Up Project](../Decisions/Unbound%20Deferred%20as%20a%20Separate%20Follow-Up%20Project.md))
+4. Continue toward planned roadmap: Docker → Active Directory → Monitoring → Wazuh
+5. Decide on the next homelab project from the candidate rotation, given about a month left until the career fair
