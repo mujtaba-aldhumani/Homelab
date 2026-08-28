@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Projects/Documentation & Planning.md",
+                "file": "Projects/Windows 11 VM.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Documentation & Planning"
+              "title": "Windows 11 VM"
             }
           }
         ]
@@ -187,10 +187,10 @@
   },
   "active": "c8611a0be07f98fb",
   "lastOpenFiles": [
-    "Projects/Proxmox.md",
-    "Projects/Documentation & Planning.md",
-    "Projects/Pi-hole.md",
     "Projects/Tailscale.md",
+    "Projects/Pi-hole.md",
+    "Projects/Documentation & Planning.md",
+    "Projects/Proxmox.md",
     "Projects/Windows 11 VM.md",
     "Projects/Active Directory.md",
     "README.md",
