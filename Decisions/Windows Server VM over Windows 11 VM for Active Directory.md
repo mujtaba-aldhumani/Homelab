@@ -24,4 +24,5 @@ Adopted.
 
 ## Related
 
-- [Proxmox](../Projects/Proxmox.md)
+- [Active Directory](../Projects/Active%20Directory.md)
+- [Windows 11 VM](../Projects/Windows%2011%20VM.md)

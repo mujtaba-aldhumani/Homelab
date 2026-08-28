@@ -1,6 +1,6 @@
 ## Goal
 
-Build a virtualization environment for learning IT infrastructure.
+Build a virtualization host for learning IT infrastructure — the platform everything else in this vault runs on.
 
 ## Hardware
 
@@ -19,133 +19,48 @@ Build a virtualization environment for learning IT infrastructure.
 - Security Monitoring
 - Remote Access
 
-## Virtual Machines
+## Installation
 
-### Windows 11 (windows11 / VMID 100)
+Pre-installation checklist, completed before wiping the machine's existing Windows 11 Pro OEM install:
 
-Status: Installed, unactivated (see [Windows Practice VM - Left Unactivated](../Decisions/Windows%20Practice%20VM%20-%20Left%20Unactivated.md)). Domain-joined to `mujtaba.internal` as of 2026-08-27, now serving as the AD project's client machine rather than a standalone practice VM.
+- Linked the Windows OEM digital license to a Microsoft account, and separately saved the OEM product key as a manual fallback (`(Get-CimInstance -ClassName SoftwareLicensingService).OA3xOriginalProductKey` — `wmic` is deprecated on current Windows builds)
+- Confirmed BIOS virtualization settings: VT-x enabled, VT-d enabled, Secure Boot disabled, UEFI-only boot
+- Identified the home subnet (`192.168.86.0/24`, gateway `192.168.86.1`) and verified `192.168.86.200` was unused via `arp -a` before assigning it as a static IP — see [Static IP over DHCP Reservation](../Decisions/Static%20IP%20over%20DHCP%20Reservation.md)
+- Chose ext4 with LVM over ZFS for the single-disk system — see [Filesystem - ext4+LVM over ZFS](../Decisions/Filesystem%20-%20ext4+LVM%20over%20ZFS.md)
 
-Specs: q35 machine, OVMF (UEFI), TPM v2.0, VirtIO SCSI disk (64GB), VirtIO NIC, 4096MB RAM, 2 cores.
+Install:
 
-![Windows 11 VM hardware config](../Screenshots/windows11-vm-config.png)
-*Final hardware config before first boot.*
+- Verified the Proxmox VE 9.2-1 ISO's SHA256 checksum before writing it to a USB installer
+- Hit a "no device with valid iso found" boot error, then a post-install web UI/ping unreachable issue — both resolved; full diagnosis in [Proxmox Installation - USB Boot and Network Connectivity Issues](../Troubleshooting/Proxmox%20Installation%20-%20USB%20Boot%20and%20Network%20Connectivity%20Issues.md)
+- Installed Proxmox VE 9.2-1: ext4 filesystem, `/dev/nvme0n1`, hostname `proxmox.lan`, IP `192.168.86.200/24`, gateway `192.168.86.1`, DNS `8.8.8.8` at install time (later pointed network-wide at Pi-hole, see [Pi-hole](Pi-hole.md))
+- Confirmed web UI access at `https://192.168.86.200:8006`, ran initial package updates, switched from the enterprise repo to no-subscription
 
-### Windows Server / Domain Controller (DC01 / VMID 103)
+## Virtual Machines and LXC Containers
 
-Purpose: Active Directory domain controller for the homelab's `mujtaba.internal` domain — DNS, Group Policy, user/group management. Built as a dedicated VM rather than repurposing VM100, since Windows 11 client edition cannot run AD DS (see [Windows Server VM over Windows 11 VM for Active Directory](../Decisions/Windows%20Server%20VM%20over%20Windows%2011%20VM%20for%20Active%20Directory.md)).
+The host currently runs three VMs and one LXC container. Full build detail for each lives in its own dedicated project file:
 
-Status: Installed, promoted to first DC of a new forest (`mujtaba.internal`, see [Reserved .internal TLD over .local for AD Domain Name](../Decisions/Reserved%20.internal%20TLD%20over%20.local%20for%20AD%20Domain%20Name.md)), running. `dcdiag` passing clean. OU structure (`_Admin`, `Groups`, `Service Accounts`, `Departments` > `Sales`/`IT`/`HR`) and one GPO (Control Panel restriction, linked at `Departments`) built and verified working against a real domain-joined client (VM100). Full build/troubleshooting detail: [Daily Log — 2026-08-27](../Daily%20Logs/2026-08-27.md).
-
-Specs: q35 machine, OVMF (UEFI) with Secure Boot, TPM v2.0, VirtIO SCSI disk (40GB), VirtIO NIC, 4096MB RAM, 2 cores. Static IP 192.168.86.203 (see [Static IP over DHCP Reservation](../Decisions/Static%20IP%20over%20DHCP%20Reservation.md)), self-hosted DNS (127.0.0.1 preferred, 8.8.8.8 alternate).
-
-### Ubuntu Server / Tailscale Proxy (tailscaleproxy / VMID 101)
-
-Purpose: general remote access to home infrastructure (subnet router), and an exit node so specific devices (brother's Google TV, personal iPhone) can share the home IP for a Stremio + Real-Debrid setup (see [Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD](../Decisions/Tailscale%20Exit%20Node%20over%20SOCKS5%20Proxy%20for%20Stremio-RD.md), supersedes [Tailscale Proxy Approach for Stremio-RD](../Decisions/Tailscale%20Proxy%20Approach%20for%20Stremio-RD.md)).
-
-Status: Installed, running. Static IP 192.168.86.201 (see [Static IP over DHCP Reservation](../Decisions/Static%20IP%20over%20DHCP%20Reservation.md)), Tailscale IP 100.74.175.81, hostname `tailscaleproxy`. Advertised and approved as both a subnet router (192.168.86.0/24) and an exit node. Dante SOCKS5 proxy also installed and confirmed working (port 1080), though not the path currently used for Stremio sharing.
-
-Specs: SeaBIOS, i440fx machine, VirtIO SCSI disk (20GB), VirtIO NIC, 2048MB RAM, 1 core.
-
-![Tailscale devices connected](../Screenshots/tailscale-both-devices-connected.png)
-*Ubuntu VM and Windows machine both joined to the same tailnet, connectivity confirmed via ping.*
-
-## LXC Containers
-
-### Pi-hole (pihole / VMID 102)
-
-Purpose: network-wide DNS-based ad blocking for the home network. Built via Proxmox Community Scripts rather than manual `pct create` (see [Proxmox Community Scripts over Manual LXC Creation for Pi-hole](../Decisions/Proxmox%20Community%20Scripts%20over%20Manual%20LXC%20Creation%20for%20Pi-hole.md)).
-
-Status: Installed, running, and now handling DNS network-wide — Google Wifi's DNS was pointed at `192.168.86.202` (see [8.8.4.4 Secondary DNS over Blank Fallback for Pi-hole](../Decisions/8.8.4.4%20Secondary%20DNS%20over%20Blank%20Fallback%20for%20Pi-hole.md), [Disabling IPv6 over Public IPv6 DNS Fallback for Google Wifi Custom DNS](../Decisions/Disabling%20IPv6%20over%20Public%20IPv6%20DNS%20Fallback%20for%20Google%20Wifi%20Custom%20DNS.md)). Verified working both on the home LAN and remotely via the Tailscale exit node, after resolving a DNS-override gap in Tailscale's settings (see [Daily Log — 2026-08-26](../Daily%20Logs/2026-08-26.md)). Blocklist populated automatically during install (StevenBlack/hosts, ~76,000 domains). Declined the installer's optional Unbound add-on for now (see [Unbound Deferred as a Separate Follow-Up Project](../Decisions/Unbound%20Deferred%20as%20a%20Separate%20Follow-Up%20Project.md)).
-
-Specs: Unprivileged LXC, Debian 13, 1 core, 512MB RAM, 2GB disk, static IP 192.168.86.202/24 (see [Static IP over DHCP Reservation](../Decisions/Static%20IP%20over%20DHCP%20Reservation.md)), gateway 192.168.86.1, IPv6 disabled, FUSE and TUN/TAP both disabled.
-
-Full build/troubleshooting detail: [Daily Log — 2026-07-14](../Daily%20Logs/2026-07-14.md).
+| ID | Name | Type | Purpose | Project |
+|---|---|---|---|---|
+| 100 | windows11 | VM | General Windows practice VM, now the Active Directory client | [Windows 11 VM](Windows%2011%20VM.md) |
+| 101 | tailscaleproxy | VM | Remote access (subnet router + exit node) | [Tailscale](Tailscale.md) |
+| 102 | pihole | LXC | Network-wide DNS ad blocking | [Pi-hole](Pi-hole.md) |
+| 103 | DC01 | VM | Active Directory domain controller | [Active Directory](Active%20Directory.md) |
 
 ## Status
 
-Proxmox installed and running. Three VMs built: Windows 11 (now domain-joined AD client), Ubuntu Tailscale proxy VM, and DC01 (Windows Server 2022 domain controller). Tailscale subnet routing (whole home LAN reachable remotely) and exit node (for sharing the home IP with specific outside devices) both configured and confirmed working on `tailscaleproxy`. Pi-hole LXC is fully deployed and handling DNS-based ad blocking for the entire home network, verified both locally and remotely. Active Directory domain (`mujtaba.internal`) is live with a working OU/group structure and a Group Policy verified end-to-end against a real client.
+Proxmox installed, updated, and running on the no-subscription repo. Four workloads deployed across three VMs and one LXC container — see the individual project files above for each one's current state.
 
 ## Related Decisions
 
 - [Filesystem - ext4+LVM over ZFS](../Decisions/Filesystem%20-%20ext4+LVM%20over%20ZFS.md)
 - [Static IP over DHCP Reservation](../Decisions/Static%20IP%20over%20DHCP%20Reservation.md)
-- [Claude Desktop - Filesystem MCP over Code Tab](../Decisions/Claude%20Desktop%20-%20Filesystem%20MCP%20over%20Code%20Tab.md)
-- [Windows Practice VM - Left Unactivated](../Decisions/Windows%20Practice%20VM%20-%20Left%20Unactivated.md)
-- [Tailscale Proxy Approach for Stremio-RD](../Decisions/Tailscale%20Proxy%20Approach%20for%20Stremio-RD.md) (superseded)
-- [Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD](../Decisions/Tailscale%20Exit%20Node%20over%20SOCKS5%20Proxy%20for%20Stremio-RD.md)
-- [SSH over Proxmox Console for Linux VM Management](../Decisions/SSH%20over%20Proxmox%20Console%20for%20Linux%20VM%20Management.md)
-- [Vault Separation - Homelab vs Life](../Decisions/Vault%20Separation%20-%20Homelab%20vs%20Life.md)
-- [Proxmox Community Scripts over Manual LXC Creation for Pi-hole](../Decisions/Proxmox%20Community%20Scripts%20over%20Manual%20LXC%20Creation%20for%20Pi-hole.md)
-- [Unbound Deferred as a Separate Follow-Up Project](../Decisions/Unbound%20Deferred%20as%20a%20Separate%20Follow-Up%20Project.md)
-- [8.8.4.4 Secondary DNS over Blank Fallback for Pi-hole](../Decisions/8.8.4.4%20Secondary%20DNS%20over%20Blank%20Fallback%20for%20Pi-hole.md)
-- [Disabling IPv6 over Public IPv6 DNS Fallback for Google Wifi Custom DNS](../Decisions/Disabling%20IPv6%20over%20Public%20IPv6%20DNS%20Fallback%20for%20Google%20Wifi%20Custom%20DNS.md)
-- [Windows Server VM over Windows 11 VM for Active Directory](../Decisions/Windows%20Server%20VM%20over%20Windows%2011%20VM%20for%20Active%20Directory.md)
-- [Reserved .internal TLD over .local for AD Domain Name](../Decisions/Reserved%20.internal%20TLD%20over%20.local%20for%20AD%20Domain%20Name.md)
 
 ## Project Log
 
-### 2026-06-04
-
-- Purchased Lenovo ThinkCentre M720q
-- Installed Obsidian
-- Created documentation vault
-- Connected vault to GitHub
-- Configured Obsidian Git
-- Verified synchronization between M720q and ASUS laptop
-
 ### 2026-07-11
 
-- Completed pre-installation checklist: BIOS virtualization settings (VT-x, VT-d), Secure Boot disabled, UEFI-only confirmed
-- Linked Windows OEM digital license to Microsoft account and saved product key as backup
-- Planned network configuration: static IP 192.168.86.200/24, verified unused via arp -a (see [Static IP over DHCP Reservation](../Decisions/Static%20IP%20over%20DHCP%20Reservation.md))
-- Decided on ext4+LVM over ZFS (see [Filesystem - ext4+LVM over ZFS](../Decisions/Filesystem%20-%20ext4+LVM%20over%20ZFS.md))
-- Verified Proxmox VE 9.2-1 ISO checksum before installation
-- Resolved USB boot failure and post-install connectivity issue (see [Proxmox Installation - USB Boot and Network Connectivity Issues](../Troubleshooting/Proxmox%20Installation%20-%20USB%20Boot%20and%20Network%20Connectivity%20Issues.md))
-- Successfully installed Proxmox VE 9.2-1
-- Confirmed web UI access at [https://192.168.86.200:8006](https://192.168.86.200:8006)
-- Updated packages, switched to no-subscription repo
-
-### 2026-07-12
-
-- Set up Claude Desktop filesystem MCP integration to read/write directly into this vault (see [Claude Desktop - Filesystem MCP over Code Tab](../Decisions/Claude%20Desktop%20-%20Filesystem%20MCP%20over%20Code%20Tab.md))
-- Built Windows 11 practice VM (VMID 100) — see [2026-07-12](../Daily%20Logs/2026-07-12.md) for full detail on driver loading, activation issue, and backup restore; activation decision in [Windows Practice VM - Left Unactivated](../Decisions/Windows%20Practice%20VM%20-%20Left%20Unactivated.md)
-- Built Ubuntu Server VM (VMID 101) for Tailscale — static IP 192.168.86.201
-- Installed and authenticated Tailscale on the Ubuntu VM and on the personal laptop, joining both to the same tailnet
-- Confirmed working connectivity between both devices over Tailscale (ping test successful)
-- Clarified requirement for the Stremio/RD use case — see [Tailscale Proxy Approach for Stremio-RD](../Decisions/Tailscale%20Proxy%20Approach%20for%20Stremio-RD.md)
-
-### 2026-07-13
-
-- Corrected 2026-07-12 log: the Windows Tailscale device was the personal laptop, not the Windows 11 practice VM; joined the Windows 11 VM to the tailnet separately (100.76.5.113)
-- Set up Tailscale subnet routing so the whole home LAN (192.168.86.0/24) is reachable remotely, not just individually-joined devices — see [2026-07-13](../Daily%20Logs/2026-07-13.md) for full walkthrough
-- Installed and configured Dante SOCKS5 proxy on `tailscaleproxy`, confirmed working via external curl test — later superseded for the Stremio/RD use case, see [Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD](../Decisions/Tailscale%20Exit%20Node%20over%20SOCKS5%20Proxy%20for%20Stremio-RD.md)
-- Discovered Stremio has no native proxy support; re-scoped the Stremio/RD sharing requirement to two specific devices and switched to Tailscale's exit-node feature instead
-- Advertised and approved `tailscaleproxy` as a Tailscale exit node
-- Ran into and resolved several troubleshooting issues along the way — see [IP Forwarding Not Persisting After Reboot](../Troubleshooting/IP%20Forwarding%20Not%20Persisting%20After%20Reboot.md) and [Stremio Has No Native Proxy Support](../Troubleshooting/Stremio%20Has%20No%20Native%20Proxy%20Support.md)
-
-### 2026-07-14
-
-- Built Pi-hole LXC (VMID 102) for network-wide ad blocking, via Proxmox Community Scripts (see [Proxmox Community Scripts over Manual LXC Creation for Pi-hole](../Decisions/Proxmox%20Community%20Scripts%20over%20Manual%20LXC%20Creation%20for%20Pi-hole.md))
-- Hit and resolved several unrelated tooling issues along the way — see [Daily Log — 2026-07-14](../Daily%20Logs/2026-07-14.md) for the full walkthrough, or individually: [Bracketed-Paste Corruption in Proxmox noVNC Console](../Troubleshooting/Bracketed-Paste%20Corruption%20in%20Proxmox%20noVNC%20Console.md), [QuickEdit Mode and noVNC Selection Freezing Console Input](../Troubleshooting/QuickEdit%20Mode%20and%20noVNC%20Selection%20Freezing%20Console%20Input.md), [raw.githubusercontent.com Intermittent DNS Resolution Failures](../Troubleshooting/raw.githubusercontent.com%20Intermittent%20DNS%20Resolution%20Failures.md), [Piped Install Script Swallowing Interactive Confirmation Prompt](../Troubleshooting/Piped%20Install%20Script%20Swallowing%20Interactive%20Confirmation%20Prompt.md), [pct exec Not Resolving Binary via PATH](../Troubleshooting/pct%20exec%20Not%20Resolving%20Binary%20via%20PATH.md)
-- Confirmed Pi-hole installed, running, and reachable at `http://192.168.86.202/admin`; admin password set
-- Declined the installer's optional Unbound add-on for now (see [Unbound Deferred as a Separate Follow-Up Project](../Decisions/Unbound%20Deferred%20as%20a%20Separate%20Follow-Up%20Project.md))
-- Network-wide DNS switch blocked on brother's Google Wifi/Google Home account access (network is under his account; he's currently out of town, but this can be granted remotely — doesn't require him to be home)
-
-### 2026-08-26
-
-- Got Google Wifi/Google Home admin access from brother; pointed the network's primary DNS at `192.168.86.202`, kept `8.8.4.4` as secondary (see [8.8.4.4 Secondary DNS over Blank Fallback for Pi-hole](../Decisions/8.8.4.4%20Secondary%20DNS%20over%20Blank%20Fallback%20for%20Pi-hole.md)), and disabled IPv6 on the network to close an IPv6 DNS bypass path (see [Disabling IPv6 over Public IPv6 DNS Fallback for Google Wifi Custom DNS](../Decisions/Disabling%20IPv6%20over%20Public%20IPv6%20DNS%20Fallback%20for%20Google%20Wifi%20Custom%20DNS.md))
-- Ran into and resolved two testing issues — see [Daily Log — 2026-08-26](../Daily%20Logs/2026-08-26.md) for the full walkthrough, or individually: [DNS-Level Blocking Ineffective Against Streaming-Site Popup and Redirect Ads](../Troubleshooting/DNS-Level%20Blocking%20Ineffective%20Against%20Streaming-Site%20Popup%20and%20Redirect%20Ads.md), [Tailscale Exit Node Not Overriding Client DNS to Pi-hole](../Troubleshooting/Tailscale%20Exit%20Node%20Not%20Overriding%20Client%20DNS%20to%20Pi-hole.md)
-- Confirmed Pi-hole network-wide ad blocking working both on the home LAN and remotely via the Tailscale exit node — Pi-hole project complete
-
-### 2026-08-27
-
-- Built DC01 (VMID 103, Windows Server 2022) and promoted it to the first domain controller of a new forest, `mujtaba.internal` (see [Windows Server VM over Windows 11 VM for Active Directory](../Decisions/Windows%20Server%20VM%20over%20Windows%2011%20VM%20for%20Active%20Directory.md), [Reserved .internal TLD over .local for AD Domain Name](../Decisions/Reserved%20.internal%20TLD%20over%20.local%20for%20AD%20Domain%20Name.md))
-- Built full OU/group structure and a working, inherited Group Policy; domain-joined VM100 and confirmed enforcement live — see [Daily Log — 2026-08-27](../Daily%20Logs/2026-08-27.md) for the full walkthrough and troubleshooting
+- Completed the pre-installation checklist, resolved the USB boot/connectivity issue, and installed Proxmox VE 9.2-1 — see [Daily Log — 2026-07-11](../Daily%20Logs/2026-07-11.md)
 
 ## Next Steps
 
-1. Decide next AD sub-task: shared folder with group-based NTFS permissions, additional GPOs (mapped drives, wallpaper), or move to a different homelab project from the candidate rotation
-2. Install Tailscale on the brother's Google TV and personal iPhone, and use `tailscaleproxy` as their exit node
-3. Revisit Dante/a debrid-proxy addon later if a broader (non-two-person) shared-proxy setup is wanted
-4. Revisit Unbound for Pi-hole as a smaller follow-up project (see [Unbound Deferred as a Separate Follow-Up Project](../Decisions/Unbound%20Deferred%20as%20a%20Separate%20Follow-Up%20Project.md))
-5. Continue toward planned roadmap: Monitoring → Wazuh
+1. Decide the next homelab project from the candidate rotation — see [Documentation & Planning](Documentation%20&%20Planning.md)

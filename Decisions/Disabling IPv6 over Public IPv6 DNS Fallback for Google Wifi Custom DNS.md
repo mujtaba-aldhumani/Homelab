@@ -23,4 +23,4 @@ Adopted.
 
 ## Related
 
-- [Proxmox](../Projects/Proxmox.md)
+- [Pi-hole](../Projects/Pi-hole.md)

@@ -187,6 +187,7 @@
   },
   "active": "c8611a0be07f98fb",
   "lastOpenFiles": [
+    "Projects/Documentation & Planning.md",
     "Projects/Pi-hole.md",
     "Projects/Tailscale.md",
     "Projects/Windows 11 VM.md",
@@ -214,7 +215,6 @@
     "Decisions/Tailscale Exit Node over SOCKS5 Proxy for Stremio-RD.md",
     "Decisions/Static IP over DHCP Reservation.md",
     "Screenshots/windows11-activation-unable-reactivate.png",
-    "Daily Logs/2026-07-15.md",
     "Daily Logs/2026-07-13.md.e4d01e4ea5900cae3a6245e05f0337fa.tmp",
     "Screenshots/tailscale-both-devices-connected.png",
     "Screenshots/tailscale-both-devices-connected.png.png",
