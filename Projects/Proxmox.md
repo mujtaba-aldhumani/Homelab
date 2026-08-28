@@ -23,12 +23,20 @@ Build a virtualization environment for learning IT infrastructure.
 
 ### Windows 11 (windows11 / VMID 100)
 
-Status: Installed, unactivated (see [Windows Practice VM - Left Unactivated](../Decisions/Windows%20Practice%20VM%20-%20Left%20Unactivated.md)), currently shut down. Practice/learning VM, not daily-use.
+Status: Installed, unactivated (see [Windows Practice VM - Left Unactivated](../Decisions/Windows%20Practice%20VM%20-%20Left%20Unactivated.md)). Domain-joined to `mujtaba.internal` as of 2026-08-27, now serving as the AD project's client machine rather than a standalone practice VM.
 
 Specs: q35 machine, OVMF (UEFI), TPM v2.0, VirtIO SCSI disk (64GB), VirtIO NIC, 4096MB RAM, 2 cores.
 
 ![Windows 11 VM hardware config](../Screenshots/windows11-vm-config.png)
 *Final hardware config before first boot.*
+
+### Windows Server / Domain Controller (DC01 / VMID 103)
+
+Purpose: Active Directory domain controller for the homelab's `mujtaba.internal` domain — DNS, Group Policy, user/group management. Built as a dedicated VM rather than repurposing VM100, since Windows 11 client edition cannot run AD DS (see [Windows Server VM over Windows 11 VM for Active Directory](../Decisions/Windows%20Server%20VM%20over%20Windows%2011%20VM%20for%20Active%20Directory.md)).
+
+Status: Installed, promoted to first DC of a new forest (`mujtaba.internal`, see [Reserved .internal TLD over .local for AD Domain Name](../Decisions/Reserved%20.internal%20TLD%20over%20.local%20for%20AD%20Domain%20Name.md)), running. `dcdiag` passing clean. OU structure (`_Admin`, `Groups`, `Service Accounts`, `Departments` > `Sales`/`IT`/`HR`) and one GPO (Control Panel restriction, linked at `Departments`) built and verified working against a real domain-joined client (VM100). Full build/troubleshooting detail: [Daily Log — 2026-08-27](../Daily%20Logs/2026-08-27.md).
+
+Specs: q35 machine, OVMF (UEFI) with Secure Boot, TPM v2.0, VirtIO SCSI disk (40GB), VirtIO NIC, 4096MB RAM, 2 cores. Static IP 192.168.86.203 (see [Static IP over DHCP Reservation](../Decisions/Static%20IP%20over%20DHCP%20Reservation.md)), self-hosted DNS (127.0.0.1 preferred, 8.8.8.8 alternate).
 
 ### Ubuntu Server / Tailscale Proxy (tailscaleproxy / VMID 101)
 
@@ -40,14 +48,6 @@ Specs: SeaBIOS, i440fx machine, VirtIO SCSI disk (20GB), VirtIO NIC, 2048MB RAM,
 
 ![Tailscale devices connected](../Screenshots/tailscale-both-devices-connected.png)
 *Ubuntu VM and Windows machine both joined to the same tailnet, connectivity confirmed via ping.*
-
-### Windows Server (planned, not yet built)
-
-Purpose:
-
-- Active Directory
-- DNS
-- Group Policy
 
 ## LXC Containers
 
@@ -63,7 +63,7 @@ Full build/troubleshooting detail: [Daily Log — 2026-07-14](../Daily%20Logs/20
 
 ## Status
 
-Proxmox installed and running. Two VMs built (Windows 11 practice VM, Ubuntu Tailscale proxy VM), both now joined to the tailnet. Tailscale subnet routing (whole home LAN reachable remotely) and exit node (for sharing the home IP with specific outside devices) both configured and confirmed working on `tailscaleproxy`. Pi-hole LXC is fully deployed and handling DNS-based ad blocking for the entire home network, verified both locally and remotely.
+Proxmox installed and running. Three VMs built: Windows 11 (now domain-joined AD client), Ubuntu Tailscale proxy VM, and DC01 (Windows Server 2022 domain controller). Tailscale subnet routing (whole home LAN reachable remotely) and exit node (for sharing the home IP with specific outside devices) both configured and confirmed working on `tailscaleproxy`. Pi-hole LXC is fully deployed and handling DNS-based ad blocking for the entire home network, verified both locally and remotely. Active Directory domain (`mujtaba.internal`) is live with a working OU/group structure and a Group Policy verified end-to-end against a real client.
 
 ## Related Decisions
 
@@ -79,6 +79,8 @@ Proxmox installed and running. Two VMs built (Windows 11 practice VM, Ubuntu Tai
 - [Unbound Deferred as a Separate Follow-Up Project](../Decisions/Unbound%20Deferred%20as%20a%20Separate%20Follow-Up%20Project.md)
 - [8.8.4.4 Secondary DNS over Blank Fallback for Pi-hole](../Decisions/8.8.4.4%20Secondary%20DNS%20over%20Blank%20Fallback%20for%20Pi-hole.md)
 - [Disabling IPv6 over Public IPv6 DNS Fallback for Google Wifi Custom DNS](../Decisions/Disabling%20IPv6%20over%20Public%20IPv6%20DNS%20Fallback%20for%20Google%20Wifi%20Custom%20DNS.md)
+- [Windows Server VM over Windows 11 VM for Active Directory](../Decisions/Windows%20Server%20VM%20over%20Windows%2011%20VM%20for%20Active%20Directory.md)
+- [Reserved .internal TLD over .local for AD Domain Name](../Decisions/Reserved%20.internal%20TLD%20over%20.local%20for%20AD%20Domain%20Name.md)
 
 ## Project Log
 
@@ -135,10 +137,15 @@ Proxmox installed and running. Two VMs built (Windows 11 practice VM, Ubuntu Tai
 - Ran into and resolved two testing issues — see [Daily Log — 2026-08-26](../Daily%20Logs/2026-08-26.md) for the full walkthrough, or individually: [DNS-Level Blocking Ineffective Against Streaming-Site Popup and Redirect Ads](../Troubleshooting/DNS-Level%20Blocking%20Ineffective%20Against%20Streaming-Site%20Popup%20and%20Redirect%20Ads.md), [Tailscale Exit Node Not Overriding Client DNS to Pi-hole](../Troubleshooting/Tailscale%20Exit%20Node%20Not%20Overriding%20Client%20DNS%20to%20Pi-hole.md)
 - Confirmed Pi-hole network-wide ad blocking working both on the home LAN and remotely via the Tailscale exit node — Pi-hole project complete
 
+### 2026-08-27
+
+- Built DC01 (VMID 103, Windows Server 2022) and promoted it to the first domain controller of a new forest, `mujtaba.internal` (see [Windows Server VM over Windows 11 VM for Active Directory](../Decisions/Windows%20Server%20VM%20over%20Windows%2011%20VM%20for%20Active%20Directory.md), [Reserved .internal TLD over .local for AD Domain Name](../Decisions/Reserved%20.internal%20TLD%20over%20.local%20for%20AD%20Domain%20Name.md))
+- Built full OU/group structure and a working, inherited Group Policy; domain-joined VM100 and confirmed enforcement live — see [Daily Log — 2026-08-27](../Daily%20Logs/2026-08-27.md) for the full walkthrough and troubleshooting
+
 ## Next Steps
 
-1. Install Tailscale on the brother's Google TV and personal iPhone, and use `tailscaleproxy` as their exit node
-2. Revisit Dante/a debrid-proxy addon later if a broader (non-two-person) shared-proxy setup is wanted
-3. Revisit Unbound for Pi-hole as a smaller follow-up project (see [Unbound Deferred as a Separate Follow-Up Project](../Decisions/Unbound%20Deferred%20as%20a%20Separate%20Follow-Up%20Project.md))
-4. Continue toward planned roadmap: Docker → Active Directory → Monitoring → Wazuh
-5. Decide on the next homelab project from the candidate rotation, given about a month left until the career fair
+1. Decide next AD sub-task: shared folder with group-based NTFS permissions, additional GPOs (mapped drives, wallpaper), or move to a different homelab project from the candidate rotation
+2. Install Tailscale on the brother's Google TV and personal iPhone, and use `tailscaleproxy` as their exit node
+3. Revisit Dante/a debrid-proxy addon later if a broader (non-two-person) shared-proxy setup is wanted
+4. Revisit Unbound for Pi-hole as a smaller follow-up project (see [Unbound Deferred as a Separate Follow-Up Project](../Decisions/Unbound%20Deferred%20as%20a%20Separate%20Follow-Up%20Project.md))
+5. Continue toward planned roadmap: Monitoring → Wazuh
