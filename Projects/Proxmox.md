@@ -63,4 +63,4 @@ Proxmox installed, updated, and running on the no-subscription repo. Four worklo
 
 ## Next Steps
 
-1. Decide the next homelab project from the candidate rotation — see [Documentation & Planning](Documentation%20&%20Planning.md)
+1. Continue extending the Active Directory project (bulk user creation, file server permissions, software deployment) before moving to the next project in the candidate rotation — see [Active Directory](Active%20Directory.md)

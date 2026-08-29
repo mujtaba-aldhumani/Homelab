@@ -71,4 +71,8 @@ Core build complete and verified end-to-end: DC promoted, OUs and groups built, 
 
 ## Next Steps
 
-1. Decide next AD sub-task: shared folder with group-based NTFS permissions, additional GPOs (mapped drives, wallpaper), or move to a different homelab project from the candidate rotation
+Planning to extend the project further before moving on, in this order:
+
+1. **Bulk user creation via PowerShell** — write a script that reads a CSV of 50+ fake employees and provisions them with `New-ADUser` in a loop, then practice routine account-lifecycle tasks against them: disabling, password resets, unlocking, and moving between OUs
+2. **File server with NTFS permissions** — create a shared folder and grant access via the existing `IT-Staff`/`Sales-Staff`/`HR-Staff` security groups (Modify vs. Read-Only), verified by logging in as different domain users; finally puts those groups to use
+3. **GPO software deployment** — package an MSI (e.g. 7-Zip), host it on a network share, and assign it via Group Policy so it auto-installs for a target OU
