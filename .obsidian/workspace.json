@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Logs/README.md",
+                "file": "Projects/Active Directory.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Active Directory"
             }
           }
         ]
@@ -185,17 +185,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1d3a21ad28a1be7f",
+  "active": "c8611a0be07f98fb",
   "lastOpenFiles": [
+    "Daily Logs/2026-08-27.md",
     "Projects/Active Directory.md",
+    "Projects/Documentation & Planning.md",
+    "Projects/Pi-hole.md",
+    "Projects/Proxmox.md",
+    "Daily Logs/README.md",
     "Projects/Windows 11 VM.md",
     "Projects/Tailscale.md",
-    "Projects/Pi-hole.md",
-    "Projects/Documentation & Planning.md",
-    "Projects/Proxmox.md",
     "README.md",
-    "Daily Logs/2026-08-27.md",
-    "Daily Logs/README.md",
     "Daily Logs/2026-07-14.md",
     "Daily Logs/2026-08-26.md",
     "CLAUDE.md",
