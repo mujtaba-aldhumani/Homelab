@@ -48,9 +48,20 @@ Built a small, lean fictional-company structure rather than deep realism, for po
 - `alex.chen` couldn't log into DC01 directly to test the GPO ("sign-in method isn't allowed") — [Domain User Login Denied on Domain Controller](../Troubleshooting/Domain%20User%20Login%20Denied%20on%20Domain%20Controller.md)
 - `gpresult` reported no RSoP data for `jordan.lee` and `sam.patel` — [gpresult Shows No RSoP Data for Users Who Have Never Logged In](../Troubleshooting/gpresult%20Shows%20No%20RSoP%20Data%20for%20Users%20Who%20Have%20Never%20Logged%20In.md)
 
+## Bulk User Provisioning and Account Lifecycle
+
+- Wrote a PowerShell script (`New-ADUser` in a loop over `Import-Csv`) to bulk-provision 51 fake employees from a CSV (17 per department, `FirstName,LastName,Department,JobTitle` columns), mapping the `Department` column directly to the matching OU path
+- Script is idempotent (checks `Get-ADUser` before creating) and sets `-ChangePasswordAtLogon $true` on every account, matching the same practice used for the manually-created accounts
+- Ran cleanly on the first pass: all 51 created, verified via `Get-ADUser -Filter * -SearchBase "OU=Departments,DC=mujtaba,DC=internal"` returning a count of 54 (3 original + 51 new)
+- Practiced the four most common account-lifecycle helpdesk tasks via ADUC/Server Manager rather than PowerShell, deliberately — bulk creation already covered the scripting/automation skill, so this practice targeted the complementary GUI skill and where these controls actually live in the interface:
+  - **Disable** — disabled Tyler Brooks (IT), simulating an offboarding ticket; confirmed disabling (not deleting) preserves the account object and its group memberships
+  - **Password reset** — reset Nadia Ahmed's (IT) password with "must change at next logon" set
+  - **Unlock** — reviewed the Account tab's lockout control on Connor Reilly (IT)
+  - **Move between OUs** — moved Marco Silva from Sales to IT, simulating an internal transfer; since GPOs apply by OU, this silently changes which policies he inherits going forward
+
 ## Status
 
-Core build complete and verified end-to-end: DC promoted, OUs and groups built, one GPO created and confirmed inherited/enforced against a real domain-joined client. Fully functional single-domain AD forest with a realistic small-company structure.
+Core build complete and verified end-to-end: DC promoted, OUs and groups built, one GPO created and confirmed inherited/enforced against a real domain-joined client, bulk user provisioning scripted, and account-lifecycle tasks practiced via the GUI. Fully functional single-domain AD forest with a realistic small-company structure.
 
 ## Related Decisions
 
@@ -69,10 +80,14 @@ Core build complete and verified end-to-end: DC promoted, OUs and groups built, 
 - Domain-joined VM100 and confirmed the policy enforced live for `alex.chen`
 - Full walkthrough and troubleshooting: [Daily Log — 2026-08-27](../Daily%20Logs/2026-08-27.md)
 
+### 2026-08-29
+
+- Wrote and ran a PowerShell bulk-import script provisioning 51 fake employees from a CSV
+- Practiced disable, password reset, unlock, and OU-move account-lifecycle tasks via ADUC
+
 ## Next Steps
 
 Planning to extend the project further before moving on, in this order:
 
-1. **Bulk user creation via PowerShell** — write a script that reads a CSV of 50+ fake employees and provisions them with `New-ADUser` in a loop, then practice routine account-lifecycle tasks against them: disabling, password resets, unlocking, and moving between OUs
-2. **File server with NTFS permissions** — create a shared folder and grant access via the existing `IT-Staff`/`Sales-Staff`/`HR-Staff` security groups (Modify vs. Read-Only), verified by logging in as different domain users; finally puts those groups to use
-3. **GPO software deployment** — package an MSI (e.g. 7-Zip), host it on a network share, and assign it via Group Policy so it auto-installs for a target OU
+1. **File server with NTFS permissions** — create a shared folder and grant access via the existing `IT-Staff`/`Sales-Staff`/`HR-Staff` security groups (Modify vs. Read-Only), verified by logging in as different domain users; finally puts those groups to use
+2. **GPO software deployment** — package an MSI (e.g. 7-Zip), host it on a network share, and assign it via Group Policy so it auto-installs for a target OU
