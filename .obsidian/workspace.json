@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Troubleshooting/GPO Software Package Browser Defaults to Local Drive.md",
+                "file": "Daily Logs/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "GPO Software Package Browser Defaults to Local Drive"
+              "title": "README"
             }
           }
         ]
@@ -187,9 +187,9 @@
   },
   "active": "c8611a0be07f98fb",
   "lastOpenFiles": [
+    "Troubleshooting/GPO Software Package Browser Defaults to Local Drive.md",
     "Decisions/Dedicated Workstations OU for Software Deployment GPO Scope.md",
     "Daily Logs/README.md",
-    "Troubleshooting/GPO Software Package Browser Defaults to Local Drive.md",
     "Troubleshooting/README.md",
     "README.md",
     "Decisions/README.md",
