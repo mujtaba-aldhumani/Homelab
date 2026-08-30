@@ -187,6 +187,7 @@
   },
   "active": "c8611a0be07f98fb",
   "lastOpenFiles": [
+    "Daily Logs/2026-08-29.md",
     "Troubleshooting/GPO Software Package Browser Defaults to Local Drive.md",
     "Decisions/Dedicated Workstations OU for Software Deployment GPO Scope.md",
     "Decisions/NTFS Permissions over Share Permissions for Access Control.md",
@@ -213,7 +214,6 @@
     "Decisions/Unbound Deferred as a Separate Follow-Up Project.md",
     "Decisions/Proxmox Community Scripts over Manual LXC Creation for Pi-hole.md",
     "Troubleshooting/pct exec Not Resolving Binary via PATH.md",
-    "Troubleshooting/raw.githubusercontent.com Intermittent DNS Resolution Failures.md",
     "Screenshots/windows11-activation-unable-reactivate.png",
     "Daily Logs/2026-07-13.md.e4d01e4ea5900cae3a6245e05f0337fa.tmp",
     "Screenshots/tailscale-both-devices-connected.png",

@@ -53,7 +53,7 @@ Built a small, lean fictional-company structure rather than deep realism, for po
 - Wrote a PowerShell script (`New-ADUser` in a loop over `Import-Csv`) to bulk-provision 51 fake employees from a CSV (17 per department, `FirstName,LastName,Department,JobTitle` columns), mapping the `Department` column directly to the matching OU path
 - Script is idempotent (checks `Get-ADUser` before creating) and sets `-ChangePasswordAtLogon $true` on every account, matching the same practice used for the manually-created accounts
 - Ran cleanly on the first pass: all 51 created, verified via `Get-ADUser -Filter * -SearchBase "OU=Departments,DC=mujtaba,DC=internal"` returning a count of 54 (3 original + 51 new)
-- Practiced the four most common account-lifecycle helpdesk tasks via ADUC/Server Manager rather than PowerShell, deliberately — bulk creation already covered the scripting/automation skill, so this practice targeted the complementary GUI skill and where these controls actually live in the interface:
+- Practiced the four most common account-lifecycle helpdesk tasks via ADUC/Server Manager rather than PowerShell, deliberately — see [GUI over PowerShell for Account-Lifecycle Practice](../Decisions/GUI%20over%20PowerShell%20for%20Account-Lifecycle%20Practice.md):
   - **Disable** — disabled Tyler Brooks (IT), simulating an offboarding ticket; confirmed disabling (not deleting) preserves the account object and its group memberships
   - **Password reset** — reset Nadia Ahmed's (IT) password with "must change at next logon" set
   - **Unlock** — reviewed the Account tab's lockout control on Connor Reilly (IT)
@@ -64,7 +64,7 @@ Built a small, lean fictional-company structure rather than deep realism, for po
 Built to finally put the `IT-Staff`/`Sales-Staff`/`HR-Staff` security groups to use, since they'd existed since the initial build but hadn't been used to grant access to anything yet.
 
 - Folder structure on DC01: `C:\CompanyShare\` with `IT`, `Sales`, `HR`, and `Public` subfolders
-- Shared the top-level folder loosely (`Authenticated Users: Full Control` at the share-permission layer), pushing all real access control down to NTFS permissions instead — the standard practice, since share and NTFS permissions stack and the more restrictive one always wins, so keeping logic in one layer avoids fighting between the two
+- Shared the top-level folder loosely (`Authenticated Users: Full Control` at the share-permission layer), pushing all real access control down to NTFS permissions instead — see [NTFS Permissions over Share Permissions for Access Control](../Decisions/NTFS%20Permissions%20over%20Share%20Permissions%20for%20Access%20Control.md)
 - Disabled inheritance on each department subfolder and set explicit NTFS permissions: `SYSTEM` and `Administrators` at Full Control (required for OS operations and ongoing manageability), plus the matching department security group at Modify — e.g. `IT-Staff: Modify` on the `IT` folder, with no other groups retaining access
 - Considered and deliberately excluded `CREATOR OWNER` — it only matters for granting the original creator of a specific file extra rights beyond their group's baseline, which wasn't the scenario here since the department group's Modify access already covers every member equally
 - `Public` folder set to `Domain Users: Read & Execute` only — a company-wide readable folder nobody outside IT/admins can write to
@@ -72,13 +72,14 @@ Built to finally put the `IT-Staff`/`Sales-Staff`/`HR-Staff` security groups to 
 
 ## GPO Software Deployment
 
-Software deployment targets computer accounts rather than user accounts, so this required a structural fix first: VM100's computer object was sitting in the default `Computers` container, not any OU built so far, meaning no existing GPO link could ever reach it.
+Software deployment targets computer accounts rather than user accounts, so this required a structural fix first: VM100's computer object was sitting in the default `Computers` container, not any OU built so far, meaning no existing GPO link could ever reach it — see [Dedicated Workstations OU for Software Deployment GPO Scope](../Decisions/Dedicated%20Workstations%20OU%20for%20Software%20Deployment%20GPO%20Scope.md).
 
 - Created a top-level `Workstations` OU, separate from the `Departments` OU that holds people, and moved VM100's computer object into it
 - Created and shared `C:\SoftwareDeploy` on DC01 (`Authenticated Users: Read` at both the share and NTFS layers) — a domain computer's SYSTEM account needs to reach the install file over the network at boot time, before any user has logged in, so this has to be a real network share rather than a local path
 - Downloaded the official 64-bit `.msi` build of 7-Zip (GPO Software Installation only understands the Windows Installer format, not a plain `.exe`) into the share
 - Created GPO "Deploy - 7-Zip" under Computer Configuration > Policies > Software Settings > Software Installation, pointed at the UNC path `\\DC01\SoftwareDeploy\<7-Zip msi>`, deployment method **Assigned** (installs automatically and silently — no user choice — versus **Published**, which would only offer it as optional in the Programs list)
 - Linked the GPO to the `Workstations` OU
+- Hit the package-selection dialog defaulting to a local-drive view instead of the network share — [GPO Software Package Browser Defaults to Local Drive](../Troubleshooting/GPO%20Software%20Package%20Browser%20Defaults%20to%20Local%20Drive.md)
 - Forced a policy refresh and rebooted VM100 — Computer Configuration software installs process at startup, before any logon, so a full reboot (not just `gpupdate /force`) is the reliable way to trigger and verify it
 - Confirmed 7-Zip File Manager installed automatically with zero user interaction required
 
@@ -91,6 +92,9 @@ Core build complete and verified end-to-end: DC promoted, OUs and groups built, 
 - [Windows Server VM over Windows 11 VM for Active Directory](../Decisions/Windows%20Server%20VM%20over%20Windows%2011%20VM%20for%20Active%20Directory.md)
 - [Reserved .internal TLD over .local for AD Domain Name](../Decisions/Reserved%20.internal%20TLD%20over%20.local%20for%20AD%20Domain%20Name.md)
 - [Static IP over DHCP Reservation](../Decisions/Static%20IP%20over%20DHCP%20Reservation.md)
+- [GUI over PowerShell for Account-Lifecycle Practice](../Decisions/GUI%20over%20PowerShell%20for%20Account-Lifecycle%20Practice.md)
+- [NTFS Permissions over Share Permissions for Access Control](../Decisions/NTFS%20Permissions%20over%20Share%20Permissions%20for%20Access%20Control.md)
+- [Dedicated Workstations OU for Software Deployment GPO Scope](../Decisions/Dedicated%20Workstations%20OU%20for%20Software%20Deployment%20GPO%20Scope.md)
 
 ## Project Log
 
@@ -110,6 +114,7 @@ Core build complete and verified end-to-end: DC promoted, OUs and groups built, 
 - Built a file server (`C:\CompanyShare`) with role-based NTFS permissions using the existing department security groups; verified least-privilege access by logging in as multiple domain users
 - Built and verified GPO software deployment: moved VM100 into a new `Workstations` OU, shared an MSI over the network, and confirmed a silent, automatic 7-Zip install at boot
 - All three planned AD extensions complete
+- Full walkthrough and troubleshooting: [Daily Log — 2026-08-29](../Daily%20Logs/2026-08-29.md)
 
 ## Next Steps
 
