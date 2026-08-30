@@ -40,7 +40,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabeticalReverse",
+                "sortOrder": "byCreatedTime",
                 "autoReveal": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -185,8 +185,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c8611a0be07f98fb",
+  "active": "1d3a21ad28a1be7f",
   "lastOpenFiles": [
+    "Troubleshooting/README.md",
+    "Decisions/README.md",
     "Projects/Windows 11 VM.md",
     "Projects/Documentation & Planning.md",
     "Projects/Active Directory.md",
@@ -214,7 +216,6 @@
     "Daily Logs/2026-07-12.md",
     "Daily Logs/2026-06-03.md",
     "Troubleshooting/Piped Install Script Swallowing Interactive Confirmation Prompt.md",
-    "Decisions/Unbound Deferred as a Separate Follow-Up Project.md",
     "Screenshots/windows11-activation-unable-reactivate.png",
     "Daily Logs/2026-07-13.md.e4d01e4ea5900cae3a6245e05f0337fa.tmp",
     "Screenshots/tailscale-both-devices-connected.png",

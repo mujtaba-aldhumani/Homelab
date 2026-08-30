@@ -13,7 +13,7 @@ Everything here runs on a single physical box, virtualized with Proxmox. Each pr
 
 | Project | What it does | Status |
 |---|---|---|
-| **Active Directory** | Single-domain AD forest (`mujtaba.internal`) — domain controller, OU/security group structure for a small fictional company, Group Policy enforcement verified against a real domain-joined client | Core build complete |
+| **Active Directory** | Single-domain AD forest (`mujtaba.internal`) — domain controller, OU/security group structure, Group Policy enforcement, bulk user provisioning, file server with role-based NTFS permissions, and GPO software deployment, all verified against a real domain-joined client | Complete |
 | **Pi-hole** | Network-wide DNS-based ad blocking, covering the whole home LAN and remote devices via Tailscale | Complete |
 | **Tailscale** | Remote access to the whole home network (subnet router) plus an exit node for sharing the home IP with specific outside devices | Complete |
 
@@ -25,8 +25,8 @@ This repo doubles as a running engineering journal, not just a project showcase.
 
 - **[Projects/](Projects/)** — one file per system. Start here for the current state of anything: what exists, its status, and links out to the detail behind it.
 - **[Daily Logs/](Daily%20Logs/)** — a dated log of what actually happened in each work session. See the [index](Daily%20Logs/README.md) for the most recent entries first.
-- **[Decisions/](Decisions/)** — one file per meaningful choice, written as *what was chosen over what, and why* — not just a settings dump.
-- **[Troubleshooting/](Troubleshooting/)** — one file per real problem hit, in Symptom → Diagnosis → Root Cause → Fix format. Nothing here is hypothetical; everything was actually encountered.
+- **[Decisions/](Decisions/)** — one file per meaningful choice, written as *what was chosen over what, and why* — not just a settings dump. See the [index](Decisions/README.md) grouped by project.
+- **[Troubleshooting/](Troubleshooting/)** — one file per real problem hit, in Symptom → Diagnosis → Root Cause → Fix format. Nothing here is hypothetical; everything was actually encountered. See the [index](Troubleshooting/README.md) grouped by project.
 
 The goal of splitting it this way: a project file gives you the current picture in 30 seconds, while the Decisions and Troubleshooting folders let anyone curious dig into *why* something is built the way it is, without wading through unrelated project history to find it.
 
