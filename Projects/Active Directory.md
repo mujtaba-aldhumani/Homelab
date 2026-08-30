@@ -59,9 +59,20 @@ Built a small, lean fictional-company structure rather than deep realism, for po
   - **Unlock** — reviewed the Account tab's lockout control on Connor Reilly (IT)
   - **Move between OUs** — moved Marco Silva from Sales to IT, simulating an internal transfer; since GPOs apply by OU, this silently changes which policies he inherits going forward
 
+## File Server and NTFS Permissions
+
+Built to finally put the `IT-Staff`/`Sales-Staff`/`HR-Staff` security groups to use, since they'd existed since the initial build but hadn't been used to grant access to anything yet.
+
+- Folder structure on DC01: `C:\CompanyShare\` with `IT`, `Sales`, `HR`, and `Public` subfolders
+- Shared the top-level folder loosely (`Authenticated Users: Full Control` at the share-permission layer), pushing all real access control down to NTFS permissions instead — the standard practice, since share and NTFS permissions stack and the more restrictive one always wins, so keeping logic in one layer avoids fighting between the two
+- Disabled inheritance on each department subfolder and set explicit NTFS permissions: `SYSTEM` and `Administrators` at Full Control (required for OS operations and ongoing manageability), plus the matching department security group at Modify — e.g. `IT-Staff: Modify` on the `IT` folder, with no other groups retaining access
+- Considered and deliberately excluded `CREATOR OWNER` — it only matters for granting the original creator of a specific file extra rights beyond their group's baseline, which wasn't the scenario here since the department group's Modify access already covers every member equally
+- `Public` folder set to `Domain Users: Read & Execute` only — a company-wide readable folder nobody outside IT/admins can write to
+- Verified by logging into VM100 as `alex.chen` (IT) and `jordan.lee` (Sales): each could access and write to their own department's folder, each got Access Denied on the other department's folder, and both could read (but not write to) `Public`
+
 ## Status
 
-Core build complete and verified end-to-end: DC promoted, OUs and groups built, one GPO created and confirmed inherited/enforced against a real domain-joined client, bulk user provisioning scripted, and account-lifecycle tasks practiced via the GUI. Fully functional single-domain AD forest with a realistic small-company structure.
+Core build complete and verified end-to-end: DC promoted, OUs and groups built, one GPO created and confirmed inherited/enforced against a real domain-joined client, bulk user provisioning scripted, account-lifecycle tasks practiced via the GUI, and a file server with role-based NTFS permissions built and verified with least-privilege testing across multiple accounts. Fully functional single-domain AD forest with a realistic small-company structure.
 
 ## Related Decisions
 
@@ -84,10 +95,8 @@ Core build complete and verified end-to-end: DC promoted, OUs and groups built, 
 
 - Wrote and ran a PowerShell bulk-import script provisioning 51 fake employees from a CSV
 - Practiced disable, password reset, unlock, and OU-move account-lifecycle tasks via ADUC
+- Built a file server (`C:\CompanyShare`) with role-based NTFS permissions using the existing department security groups; verified least-privilege access by logging in as multiple domain users
 
 ## Next Steps
 
-Planning to extend the project further before moving on, in this order:
-
-1. **File server with NTFS permissions** — create a shared folder and grant access via the existing `IT-Staff`/`Sales-Staff`/`HR-Staff` security groups (Modify vs. Read-Only), verified by logging in as different domain users; finally puts those groups to use
-2. **GPO software deployment** — package an MSI (e.g. 7-Zip), host it on a network share, and assign it via Group Policy so it auto-installs for a target OU
+1. **GPO software deployment** — package an MSI (e.g. 7-Zip), host it on a network share, and assign it via Group Policy so it auto-installs for a target OU
