@@ -70,9 +70,21 @@ Built to finally put the `IT-Staff`/`Sales-Staff`/`HR-Staff` security groups to 
 - `Public` folder set to `Domain Users: Read & Execute` only — a company-wide readable folder nobody outside IT/admins can write to
 - Verified by logging into VM100 as `alex.chen` (IT) and `jordan.lee` (Sales): each could access and write to their own department's folder, each got Access Denied on the other department's folder, and both could read (but not write to) `Public`
 
+## GPO Software Deployment
+
+Software deployment targets computer accounts rather than user accounts, so this required a structural fix first: VM100's computer object was sitting in the default `Computers` container, not any OU built so far, meaning no existing GPO link could ever reach it.
+
+- Created a top-level `Workstations` OU, separate from the `Departments` OU that holds people, and moved VM100's computer object into it
+- Created and shared `C:\SoftwareDeploy` on DC01 (`Authenticated Users: Read` at both the share and NTFS layers) — a domain computer's SYSTEM account needs to reach the install file over the network at boot time, before any user has logged in, so this has to be a real network share rather than a local path
+- Downloaded the official 64-bit `.msi` build of 7-Zip (GPO Software Installation only understands the Windows Installer format, not a plain `.exe`) into the share
+- Created GPO "Deploy - 7-Zip" under Computer Configuration > Policies > Software Settings > Software Installation, pointed at the UNC path `\\DC01\SoftwareDeploy\<7-Zip msi>`, deployment method **Assigned** (installs automatically and silently — no user choice — versus **Published**, which would only offer it as optional in the Programs list)
+- Linked the GPO to the `Workstations` OU
+- Forced a policy refresh and rebooted VM100 — Computer Configuration software installs process at startup, before any logon, so a full reboot (not just `gpupdate /force`) is the reliable way to trigger and verify it
+- Confirmed 7-Zip File Manager installed automatically with zero user interaction required
+
 ## Status
 
-Core build complete and verified end-to-end: DC promoted, OUs and groups built, one GPO created and confirmed inherited/enforced against a real domain-joined client, bulk user provisioning scripted, account-lifecycle tasks practiced via the GUI, and a file server with role-based NTFS permissions built and verified with least-privilege testing across multiple accounts. Fully functional single-domain AD forest with a realistic small-company structure.
+Core build complete and verified end-to-end: DC promoted, OUs and groups built, a Control Panel GPO created and confirmed inherited/enforced against a real domain-joined client, bulk user provisioning scripted, account-lifecycle tasks practiced via the GUI, a file server with role-based NTFS permissions built and verified with least-privilege testing, and computer-targeted software deployment via GPO built and verified with a silent, automatic install. Fully functional single-domain AD forest with a realistic small-company structure — all three planned extensions complete.
 
 ## Related Decisions
 
@@ -96,7 +108,9 @@ Core build complete and verified end-to-end: DC promoted, OUs and groups built, 
 - Wrote and ran a PowerShell bulk-import script provisioning 51 fake employees from a CSV
 - Practiced disable, password reset, unlock, and OU-move account-lifecycle tasks via ADUC
 - Built a file server (`C:\CompanyShare`) with role-based NTFS permissions using the existing department security groups; verified least-privilege access by logging in as multiple domain users
+- Built and verified GPO software deployment: moved VM100 into a new `Workstations` OU, shared an MSI over the network, and confirmed a silent, automatic 7-Zip install at boot
+- All three planned AD extensions complete
 
 ## Next Steps
 
-1. **GPO software deployment** — package an MSI (e.g. 7-Zip), host it on a network share, and assign it via Group Policy so it auto-installs for a target OU
+1. Decide the next homelab project from the candidate rotation — see [Documentation & Planning](Documentation%20&%20Planning.md)
