@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Projects/Active Directory.md",
+                "file": "Troubleshooting/Tailscale Exit Node Not Overriding Client DNS to Pi-hole.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Active Directory"
+              "title": "Tailscale Exit Node Not Overriding Client DNS to Pi-hole"
             }
           }
         ]
@@ -188,13 +188,13 @@
   "active": "c8611a0be07f98fb",
   "lastOpenFiles": [
     "Daily Logs/2026-08-29.md",
+    "Projects/Active Directory.md",
     "Troubleshooting/GPO Software Package Browser Defaults to Local Drive.md",
     "Decisions/Dedicated Workstations OU for Software Deployment GPO Scope.md",
     "Decisions/NTFS Permissions over Share Permissions for Access Control.md",
     "Decisions/Windows Server VM over Windows 11 VM for Active Directory.md",
     "Decisions/GUI over PowerShell for Account-Lifecycle Practice.md",
     "Projects/Windows 11 VM.md",
-    "Projects/Active Directory.md",
     "Daily Logs/2026-08-27.md",
     "Projects/Documentation & Planning.md",
     "Projects/Pi-hole.md",
