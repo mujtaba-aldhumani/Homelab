@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "3a60fe5e06885f68",
+        "id": "fbc676e8eadac352",
         "type": "tabs",
         "children": [
           {
-            "id": "c8611a0be07f98fb",
+            "id": "d10d585c957ec678",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "sync test"
             }
+          },
+          {
+            "id": "03ae1cf8afe5f740",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "conflict-files-obsidian-git.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "conflict-files-obsidian-git"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -185,10 +200,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c8611a0be07f98fb",
+  "active": "03ae1cf8afe5f740",
   "lastOpenFiles": [
-    "Daily Logs/README.md",
     "sync test.md",
+    "conflict-files-obsidian-git.md",
+    "Daily Logs/README.md",
     "Troubleshooting/GPO Software Package Browser Defaults to Local Drive.md",
     "Decisions/Dedicated Workstations OU for Software Deployment GPO Scope.md",
     "Troubleshooting/README.md",
@@ -215,7 +231,6 @@
     "Daily Logs/2026-07-11.md",
     "Daily Logs/2026-07-13.md",
     "Daily Logs/2026-07-12.md",
-    "Daily Logs/2026-06-03.md",
     "Screenshots/windows11-activation-unable-reactivate.png",
     "Daily Logs/2026-07-13.md.e4d01e4ea5900cae3a6245e05f0337fa.tmp",
     "Screenshots/tailscale-both-devices-connected.png",
