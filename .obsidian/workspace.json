@@ -40,7 +40,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "byCreatedTime",
+                "sortOrder": "alphabeticalReverse",
                 "autoReveal": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -185,12 +185,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c8611a0be07f98fb",
+  "active": "1d3a21ad28a1be7f",
   "lastOpenFiles": [
+    "Daily Logs/README.md",
+    "Daily Logs/2026-08-29.md",
     "Daily Logs/2026-07-11.md",
     "Daily Logs/2026-07-12.md",
     "Daily Logs/2026-06-03.md",
-    "Daily Logs/README.md",
     "Troubleshooting/GPO Software Package Browser Defaults to Local Drive.md",
     "Decisions/Dedicated Workstations OU for Software Deployment GPO Scope.md",
     "Troubleshooting/README.md",
@@ -202,7 +203,6 @@
     "Screenshots/windows11-vm-config.png",
     "Screenshots/Pihole-DNS-Settings.png",
     "Troubleshooting/Tailscale Exit Node Not Overriding Client DNS to Pi-hole.md",
-    "Daily Logs/2026-08-29.md",
     "Decisions/NTFS Permissions over Share Permissions for Access Control.md",
     "Decisions/Windows Server VM over Windows 11 VM for Active Directory.md",
     "Decisions/GUI over PowerShell for Account-Lifecycle Practice.md",
