@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "fbc676e8eadac352",
+        "id": "54c4a8b4be3ca8d0",
         "type": "tabs",
         "children": [
           {
-            "id": "d10d585c957ec678",
+            "id": "375bf7ffb3455f23",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "sync test.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "sync test"
+              "title": "New tab"
             }
           }
         ]
@@ -40,7 +36,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "byCreatedTime",
+                "sortOrder": "alphabeticalReverse",
                 "autoReveal": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -185,15 +181,18 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d10d585c957ec678",
+  "active": "375bf7ffb3455f23",
   "lastOpenFiles": [
-    "Decisions/Dedicated Workstations OU for Software Deployment GPO Scope.md",
     "sync test.md",
-    "conflict-files-obsidian-git.md",
     "Daily Logs/README.md",
-    "Troubleshooting/GPO Software Package Browser Defaults to Local Drive.md",
-    "Troubleshooting/README.md",
+    "Daily Logs/2026-08-29.md",
     "README.md",
+    "Daily Logs/2026-07-11.md",
+    "Daily Logs/2026-07-12.md",
+    "Daily Logs/2026-06-03.md",
+    "Troubleshooting/GPO Software Package Browser Defaults to Local Drive.md",
+    "Decisions/Dedicated Workstations OU for Software Deployment GPO Scope.md",
+    "Troubleshooting/README.md",
     "Decisions/README.md",
     "Projects/Windows 11 VM.md",
     "Projects/Documentation & Planning.md",
@@ -201,7 +200,6 @@
     "Screenshots/windows11-vm-config.png",
     "Screenshots/Pihole-DNS-Settings.png",
     "Troubleshooting/Tailscale Exit Node Not Overriding Client DNS to Pi-hole.md",
-    "Daily Logs/2026-08-29.md",
     "Decisions/NTFS Permissions over Share Permissions for Access Control.md",
     "Decisions/Windows Server VM over Windows 11 VM for Active Directory.md",
     "Decisions/GUI over PowerShell for Account-Lifecycle Practice.md",
@@ -213,9 +211,7 @@
     "Daily Logs/2026-08-26.md",
     "CLAUDE.md",
     "Daily Logs/2026-08-26.md.28996503039e82f293694aa5e872b6fb.tmp",
-    "Daily Logs/2026-07-11.md",
     "Daily Logs/2026-07-13.md",
-    "Daily Logs/2026-07-12.md",
     "Screenshots/windows11-activation-unable-reactivate.png",
     "Daily Logs/2026-07-13.md.e4d01e4ea5900cae3a6245e05f0337fa.tmp",
     "Screenshots/tailscale-both-devices-connected.png",
