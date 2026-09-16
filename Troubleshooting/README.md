@@ -9,6 +9,15 @@ One file per real problem hit, in Symptom → Diagnosis → Root Cause → Fix f
 - [gpresult Shows No RSoP Data for Users Who Have Never Logged In](gpresult%20Shows%20No%20RSoP%20Data%20for%20Users%20Who%20Have%20Never%20Logged%20In.md)
 - [GPO Software Package Browser Defaults to Local Drive](GPO%20Software%20Package%20Browser%20Defaults%20to%20Local%20Drive.md)
 
+## Zammad
+
+- [Community Script Produces No Output on First Run](Community%20Script%20Produces%20No%20Output%20on%20First%20Run.md)
+- [LXC Setup Wizard Cannot Revisit Container Type Field](LXC%20Setup%20Wizard%20Cannot%20Revisit%20Container%20Type%20Field.md)
+- [Proxmox Host Upgrade Fails on Enterprise Repository Without Subscription](Proxmox%20Host%20Upgrade%20Fails%20on%20Enterprise%20Repository%20Without%20Subscription.md)
+- [Interrupted Zammad Install Leaves Container Running With No Services](Interrupted%20Zammad%20Install%20Leaves%20Container%20Running%20With%20No%20Services.md)
+- [Zammad systemd Units Show sleep infinity as Main Process](Zammad%20systemd%20Units%20Show%20sleep%20infinity%20as%20Main%20Process.md)
+- [Zammad Owner Dropdown Missing Newly-Created Agent](Zammad%20Owner%20Dropdown%20Missing%20Newly-Created%20Agent.md)
+
 ## Pi-hole
 
 - [Bracketed-Paste Corruption in Proxmox noVNC Console](Bracketed-Paste%20Corruption%20in%20Proxmox%20noVNC%20Console.md)

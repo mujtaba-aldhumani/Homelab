@@ -45,10 +45,11 @@ The host currently runs three VMs and one LXC container. Full build detail for e
 | 101 | tailscaleproxy | VM | Remote access (subnet router + exit node) | [Tailscale](Tailscale.md) |
 | 102 | pihole | LXC | Network-wide DNS ad blocking | [Pi-hole](Pi-hole.md) |
 | 103 | DC01 | VM | Active Directory domain controller | [Active Directory](Active%20Directory.md) |
+| 104 | zammad | LXC | Helpdesk/ticketing system | [Zammad](Zammad.md) |
 
 ## Status
 
-Proxmox installed, updated, and running on the no-subscription repo. Four workloads deployed across three VMs and one LXC container — see the individual project files above for each one's current state.
+Proxmox installed, updated, and running on the no-subscription repo. Five workloads deployed across three VMs and two LXC containers — see the individual project files above for each one's current state.
 
 ## Related Decisions
 

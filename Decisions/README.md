@@ -9,6 +9,8 @@ One file per meaningful choice — what was chosen over what, and why. Grouped b
 - [GUI over PowerShell for Account-Lifecycle Practice](GUI%20over%20PowerShell%20for%20Account-Lifecycle%20Practice.md)
 - [NTFS Permissions over Share Permissions for Access Control](NTFS%20Permissions%20over%20Share%20Permissions%20for%20Access%20Control.md)
 - [Dedicated Workstations OU for Software Deployment GPO Scope](Dedicated%20Workstations%20OU%20for%20Software%20Deployment%20GPO%20Scope.md)
+- [Narrow Password-Reset-Only Delegation for Helpdesk-Techs](Narrow%20Password-Reset-Only%20Delegation%20for%20Helpdesk-Techs.md)
+- [Dedicated Helpdesk OU over Nesting Under Departments](Dedicated%20Helpdesk%20OU%20over%20Nesting%20Under%20Departments.md)
 
 ## Windows 11 VM
 
@@ -31,6 +33,13 @@ One file per meaningful choice — what was chosen over what, and why. Grouped b
 
 - [Filesystem - ext4+LVM over ZFS](Filesystem%20-%20ext4+LVM%20over%20ZFS.md)
 - [Static IP over DHCP Reservation](Static%20IP%20over%20DHCP%20Reservation.md)
+
+## Zammad
+
+- [Zammad over osTicket for Ticketing Project](Zammad%20over%20osTicket%20for%20Ticketing%20Project.md)
+- [Privileged over Unprivileged LXC for Zammad](Privileged%20over%20Unprivileged%20LXC%20for%20Zammad.md)
+- [Own Admin Account over Separate Agent Persona for Zammad](Own%20Admin%20Account%20over%20Separate%20Agent%20Persona%20for%20Zammad.md) (superseded)
+- [Single IT Support Group over Per-Department Groups for Zammad](Single%20IT%20Support%20Group%20over%20Per-Department%20Groups%20for%20Zammad.md)
 
 ## Documentation & Planning
 
