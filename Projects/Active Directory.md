@@ -83,9 +83,20 @@ Software deployment targets computer accounts rather than user accounts, so this
 - Forced a policy refresh and rebooted VM100 — Computer Configuration software installs process at startup, before any logon, so a full reboot (not just `gpupdate /force`) is the reliable way to trigger and verify it
 - Confirmed 7-Zip File Manager installed automatically with zero user interaction required
 
+## Helpdesk Delegation of Control
+
+Extended the project to support the [Zammad](Zammad.md) helpdesk simulation: a fictional IT support technician, Taylor Morgan, with real but narrowly-scoped AD access rather than full admin rights.
+
+- Created a top-level `Helpdesk` OU, kept as a sibling to `Departments` rather than nested inside it — see [Dedicated Helpdesk OU over Nesting Under Departments](../Decisions/Dedicated%20Helpdesk%20OU%20over%20Nesting%20Under%20Departments.md)
+- Created the Taylor Morgan domain user inside it, Job Title "IT Support Technician"; not added to Domain Admins
+- Created a `Helpdesk-Techs` global security group (alongside `IT-Staff`/`Sales-Staff`/`HR-Staff` in the `Groups` OU) and added Taylor as its only member, so permissions are delegated to the group rather than the individual
+- Ran the Delegation of Control Wizard on the `Departments` OU, initially selecting three common tasks (create/delete/manage user accounts, reset passwords, create/delete/manage groups) before narrowing to just password reset — see [Narrow Password-Reset-Only Delegation for Helpdesk-Techs](../Decisions/Narrow%20Password-Reset-Only%20Delegation%20for%20Helpdesk-Techs.md)
+- Taylor works from VM100 (the existing domain-joined client) rather than logging into DC01 directly, consistent with the domain controller's default logon restriction already documented in [Domain User Login Denied on Domain Controller](../Troubleshooting/Domain%20User%20Login%20Denied%20on%20Domain%20Controller.md)
+- Verified end-to-end as part of a full Zammad ticket workflow: as Taylor, successfully reset Alex Chen's password from VM100, then confirmed the delegation's boundary held by attempting (and being denied) account deletion and privileged group membership — see [Zammad](Zammad.md) for the full ticket-to-resolution walkthrough
+
 ## Status
 
-Core build complete and verified end-to-end: DC promoted, OUs and groups built, a Control Panel GPO created and confirmed inherited/enforced against a real domain-joined client, bulk user provisioning scripted, account-lifecycle tasks practiced via the GUI, a file server with role-based NTFS permissions built and verified with least-privilege testing, and computer-targeted software deployment via GPO built and verified with a silent, automatic install. Fully functional single-domain AD forest with a realistic small-company structure — all three planned extensions complete.
+Core build complete and verified end-to-end: DC promoted, OUs and groups built, a Control Panel GPO created and confirmed inherited/enforced against a real domain-joined client, bulk user provisioning scripted, account-lifecycle tasks practiced via the GUI, a file server with role-based NTFS permissions built and verified with least-privilege testing, and computer-targeted software deployment via GPO built and verified with a silent, automatic install. Later extended with a delegated, least-privilege helpdesk-tech identity (Taylor Morgan) built specifically to support the Zammad ticketing project, with the delegation's narrow scope verified via a negative permission test. Fully functional single-domain AD forest with a realistic small-company structure.
 
 ## Related Decisions
 
@@ -95,6 +106,8 @@ Core build complete and verified end-to-end: DC promoted, OUs and groups built, 
 - [GUI over PowerShell for Account-Lifecycle Practice](../Decisions/GUI%20over%20PowerShell%20for%20Account-Lifecycle%20Practice.md)
 - [NTFS Permissions over Share Permissions for Access Control](../Decisions/NTFS%20Permissions%20over%20Share%20Permissions%20for%20Access%20Control.md)
 - [Dedicated Workstations OU for Software Deployment GPO Scope](../Decisions/Dedicated%20Workstations%20OU%20for%20Software%20Deployment%20GPO%20Scope.md)
+- [Narrow Password-Reset-Only Delegation for Helpdesk-Techs](../Decisions/Narrow%20Password-Reset-Only%20Delegation%20for%20Helpdesk-Techs.md)
+- [Dedicated Helpdesk OU over Nesting Under Departments](../Decisions/Dedicated%20Helpdesk%20OU%20over%20Nesting%20Under%20Departments.md)
 
 ## Project Log
 
@@ -115,6 +128,12 @@ Core build complete and verified end-to-end: DC promoted, OUs and groups built, 
 - Built and verified GPO software deployment: moved VM100 into a new `Workstations` OU, shared an MSI over the network, and confirmed a silent, automatic 7-Zip install at boot
 - All three planned AD extensions complete
 - Full walkthrough and troubleshooting: [Daily Log — 2026-08-29](../Daily%20Logs/2026-08-29.md)
+
+### 2026-09-15
+
+- Extended the domain with a Helpdesk OU, a `Helpdesk-Techs` security group, and a narrowly-scoped password-reset delegation for a fictional helpdesk technician, Taylor Morgan
+- Verified the delegation end-to-end as part of the [Zammad](Zammad.md) ticket workflow test: successful password reset from VM100, denied on out-of-scope actions
+- Full walkthrough and troubleshooting: [Daily Log — 2026-09-15](../Daily%20Logs/2026-09-15.md)
 
 ## Next Steps
 
