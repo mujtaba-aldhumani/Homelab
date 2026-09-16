@@ -185,8 +185,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d10d585c957ec678",
+  "active": "1d3a21ad28a1be7f",
   "lastOpenFiles": [
+    "Decisions/Privileged over Unprivileged LXC for Zammad.md",
+    "Decisions/Zammad over osTicket for Ticketing Project.md",
     "conflict-files-obsidian-git.md",
     "README.md",
     "sync test.md",
@@ -214,8 +216,6 @@
     "Daily Logs/2026-08-26.md",
     "CLAUDE.md",
     "Daily Logs/2026-08-26.md.28996503039e82f293694aa5e872b6fb.tmp",
-    "Daily Logs/2026-07-11.md",
-    "Daily Logs/2026-07-13.md",
     "Screenshots/windows11-activation-unable-reactivate.png",
     "Daily Logs/2026-07-13.md.e4d01e4ea5900cae3a6245e05f0337fa.tmp",
     "Screenshots/tailscale-both-devices-connected.png",
