@@ -17,6 +17,7 @@ One file per real problem hit, in Symptom → Diagnosis → Root Cause → Fix f
 - [Interrupted Zammad Install Leaves Container Running With No Services](Interrupted%20Zammad%20Install%20Leaves%20Container%20Running%20With%20No%20Services.md)
 - [Zammad systemd Units Show sleep infinity as Main Process](Zammad%20systemd%20Units%20Show%20sleep%20infinity%20as%20Main%20Process.md)
 - [Zammad Owner Dropdown Missing Newly-Created Agent](Zammad%20Owner%20Dropdown%20Missing%20Newly-Created%20Agent.md)
+- [Duplicate IT Group Left Over From Initial Zammad Setup](Duplicate%20IT%20Group%20Left%20Over%20From%20Initial%20Zammad%20Setup.md)
 
 ## Pi-hole
 

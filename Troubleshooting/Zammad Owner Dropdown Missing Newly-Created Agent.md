@@ -12,16 +12,16 @@ Confirmed via the Zammad Rails console (`zammad run rails runner`, run through `
 - `User.find_by(email: 'taylor.morgan@mujtaba.internal').user_groups.each { |ug| puts ug.attributes.inspect }` confirmed three separate `UserGroup` rows for the same group (`group_id: 1`), one each for `read`, `create`, and `change` access — Zammad stores each access level as its own row rather than a list on one row, so this was correct data, not duplication
 - Confirmed Taylor's account was active with the Agent role
 
-Also noticed in passing while investigating: two groups existed in Zammad (`IT` and `IT Support`) rather than the single intended group — likely a leftover default group never cleaned up. Flagged as a separate minor cleanup item, not confirmed as the cause of this issue.
+Also noticed in passing while investigating: two groups existed in Zammad (`IT` and `IT Support`) — a separate leftover-group issue, resolved independently (see [Duplicate IT Group Left Over From Initial Zammad Setup](Duplicate%20IT%20Group%20Left%20Over%20From%20Initial%20Zammad%20Setup.md)) and not the cause of this issue.
 
 ## Root Cause
 
-Not conclusively identified. Everything checked at the data level (group membership, access rows, active/Agent status, correct ticket group) looked correct for Taylor to be a valid Owner candidate. Granting the `IT Support` group's "Full" access level to Taylor (a broader permission tier than Read/Create/Change) resolved the issue and Taylor then appeared as an assignable Owner. It's possible Zammad requires "Full" group access specifically for ticket-ownership eligibility, or the fix coincided with a session relogin that cleared a stale frontend cache — both were plausible and neither was isolated definitively.
+Zammad requires a user to hold the group's **Full** access level — not just Read/Create/Change — before that user is eligible to be set as a ticket's Owner in that group. Read/Create/Change is enough to see and work tickets in a group, but Owner-assignment eligibility specifically checks for Full.
 
 ## Fix
 
-Granted "Full" access on the `IT Support` group to Taylor's account, which resolved the missing-Owner-option issue.
+Granted "Full" access on the `IT Support` group to Taylor's account, confirmed via further trial and error, after which Taylor appeared correctly as an assignable Owner.
 
 ## Takeaway
 
-Left as an open question rather than a fully-understood root cause. If this recurs on a future agent account, try a clean logout/hard-refresh first (to rule out frontend caching) before escalating straight to a broader permission grant — and note that "Full" access may simply be a genuine Zammad requirement for ticket ownership, not just least-privilege overreach.
+When setting up a new Zammad agent, grant **Full** access on their working group from the start if they'll ever need to own tickets in it — Read/Create/Change alone is sufficient for an agent to see and act on a group's tickets, but not to be assigned as Owner.
