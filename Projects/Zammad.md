@@ -27,13 +27,13 @@ Specs: Privileged LXC (see [Privileged over Unprivileged LXC for Zammad](../Deci
 
 - Configured a single `IT Support` Zammad Group handling all tickets, rather than mirroring the AD project's three departments as separate routing groups — see [Single IT Support Group over Per-Department Groups for Zammad](../Decisions/Single%20IT%20Support%20Group%20over%20Per-Department%20Groups%20for%20Zammad.md)
 - Created three Organizations (Sales, IT, HR) matching the AD department structure, and added Sam Patel, Alex Chen, and Jordan Lee as Customer-role users under their matching Organization
-- Noted a leftover duplicate group (`IT` alongside `IT Support`) surfaced while troubleshooting agent permissions — not yet cleaned up, tracked in Next Steps
+- A leftover duplicate group (`IT` alongside `IT Support`) surfaced while troubleshooting agent permissions and was cleaned up — see [Duplicate IT Group Left Over From Initial Zammad Setup](../Troubleshooting/Duplicate%20IT%20Group%20Left%20Over%20From%20Initial%20Zammad%20Setup.md)
 
 ## Agent Setup and Active Directory Delegation
 
 - Initially decided to work tickets from the existing personal admin account (adding the Agent role) rather than a separate persona — see [Own Admin Account over Separate Agent Persona for Zammad](../Decisions/Own%20Admin%20Account%20over%20Separate%20Agent%20Persona%20for%20Zammad.md)
 - Revised that decision to more fully simulate a real job: created a distinct fictional agent, Taylor Morgan, as both a Zammad Agent (with `IT Support` group access) and a delegated Active Directory helpdesk-tech domain account — keeping one consistent identity across both systems. Full AD-side build (Helpdesk OU, `Helpdesk-Techs` security group, delegated permissions) documented in [Active Directory](Active%20Directory.md)
-- While assigning a test ticket, Taylor didn't initially appear as a selectable ticket Owner despite correct role/group data — root cause not conclusively identified, resolved by granting Full group access — see [Zammad Owner Dropdown Missing Newly-Created Agent](../Troubleshooting/Zammad%20Owner%20Dropdown%20Missing%20Newly-Created%20Agent.md)
+- While assigning a test ticket, Taylor didn't initially appear as a selectable ticket Owner despite correct role/group data — root cause traced to Zammad requiring Full group access (not just Read/Create/Change) for ticket-ownership eligibility — see [Zammad Owner Dropdown Missing Newly-Created Agent](../Troubleshooting/Zammad%20Owner%20Dropdown%20Missing%20Newly-Created%20Agent.md)
 
 ## End-to-End Ticket Workflow Test
 
@@ -47,7 +47,7 @@ Built to prove the two projects (Zammad + AD delegation) actually connect into o
 
 ## Status
 
-Zammad running and verified healthy (all services confirmed via real process/port checks, not just `systemctl status`). Group/Organization structure, customer accounts, and an agent account built. Extended into a working cross-project simulation with Active Directory: a delegated, least-privilege helpdesk-tech identity that actually resolves tickets by performing the real AD action, with the permission boundary verified via a negative test. Full ticket lifecycle (submission → triage → AD-side fix → resolution) demonstrated end-to-end.
+Zammad running and verified healthy (all services confirmed via real process/port checks, not just `systemctl status`). Group/Organization structure, customer accounts, and an agent account built, including tracking down and resolving a leftover duplicate group and a group-permission requirement for ticket ownership. Extended into a working cross-project simulation with Active Directory: a delegated, least-privilege helpdesk-tech identity that actually resolves tickets by performing the real AD action, with the permission boundary verified via a negative test. Full ticket lifecycle (submission → triage → AD-side fix → resolution) demonstrated end-to-end.
 
 ## Related Decisions
 
@@ -75,6 +75,4 @@ Zammad running and verified healthy (all services confirmed via real process/por
 
 ## Next Steps
 
-1. Clean up the leftover duplicate `IT` group in Zammad, leaving only `IT Support`
-2. Revisit the Owner-dropdown permission requirement if it recurs, to pin down whether "Full" group access is a genuine Zammad requirement for ticket ownership
-3. Decide the next homelab project from the candidate rotation — see [Documentation & Planning](Documentation%20&%20Planning.md)
+1. Decide the next homelab project from the candidate rotation — see [Documentation & Planning](Documentation%20&%20Planning.md)
