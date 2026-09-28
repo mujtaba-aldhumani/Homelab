@@ -180,6 +180,17 @@ Specs: ...
 1. <numbered list>
 ```
 
+## End-of-Session Checklist
+
+Before ending any session that touched the lab or the vault, walk this list. Documentation is Claude's job every session, not a follow-up the user should have to request.
+
+1. **Daily Log** — create `YYYY-MM-DD.md` for the session and add it to the top of `Daily Logs/README.md`.
+2. **Project file(s)** — update the affected file's status, Project Log, and Next Steps. If a guest VM/LXC was added, removed, or repurposed, update the table and counts in `Projects/Proxmox.md` and the affected guest's own project file.
+3. **Decisions / Troubleshooting** — one file per decision or issue, and add each new file to its folder's `README.md` under the right project heading.
+4. **Root `README.md`** — keep the project table and architecture diagram in step with the lab: add new projects, and extend a row when a project is meaningfully extended.
+5. **Scripts and configs** — anything a project's docs describe as written (scripts, config files) should be stored in the vault, not only described.
+6. **Link check** — spot-check that new relative links resolve to real files.
+
 ## Vault Scope
 
 This vault (Homelab) stays separate from any future personal "Life" vault — sibling folder, never merged — since this one is intended to double as a portfolio piece. Don't add personal/non-homelab content here.

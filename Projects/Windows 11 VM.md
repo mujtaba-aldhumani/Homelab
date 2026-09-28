@@ -26,10 +26,12 @@ Activation did not succeed automatically (error `0xC004F213`) — the OEM digita
 
 - **2026-07-13** — joined the Tailscale tailnet (`100.76.5.113`) as part of the [Tailscale](Tailscale.md) project
 - **2026-08-27** — domain-joined to `mujtaba.internal` as the client machine for the [Active Directory](Active%20Directory.md) project; confirmed live enforcement of a Group Policy while logged in as a domain user
+- **2026-08-29** — moved into a dedicated `Workstations` OU and received 7-Zip automatically and silently via a computer-targeted GPO — see [Active Directory](Active%20Directory.md)
+- **2026-09-15** — used as the workstation for the delegated helpdesk technician account (Taylor Morgan) in the Zammad ticket workflow test — see [Zammad](Zammad.md)
 
 ## Status
 
-Running, unactivated (accepted trade-off for a practice VM), joined to the tailnet, and domain-joined to `mujtaba.internal`.
+Running, unactivated (accepted trade-off for a practice VM), joined to the tailnet, and domain-joined to `mujtaba.internal` (in the `Workstations` OU).
 
 ## Related Decisions
 
@@ -48,6 +50,14 @@ Running, unactivated (accepted trade-off for a practice VM), joined to the tailn
 ### 2026-08-27
 
 - Domain-joined to `mujtaba.internal` — see [Active Directory](Active%20Directory.md)
+
+### 2026-08-29
+
+- Moved into the `Workstations` OU and confirmed automatic 7-Zip installation via GPO — see [Active Directory](Active%20Directory.md)
+
+### 2026-09-15
+
+- Served as the workstation for the delegated helpdesk technician account in the Zammad ticket workflow test — see [Zammad](Zammad.md)
 
 ## Next Steps
 

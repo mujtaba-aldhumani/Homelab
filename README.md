@@ -9,13 +9,34 @@ Everything here runs on a single physical box, virtualized with Proxmox. Each pr
 - Lenovo ThinkCentre M720q — Intel i5-8400T, 16GB RAM, 500GB SSD
 - Proxmox VE 9.2 as the hypervisor
 
+## Architecture
+
+Everything runs on one Proxmox host behind a Google Wifi router. Pi-hole is the network's DNS server, and Tailscale provides remote access.
+
+```mermaid
+flowchart TD
+    ISP["Spectrum modem"] --> GW["Google Wifi router - 192.168.86.1"]
+    GW --> PVE["Proxmox VE host - 192.168.86.200"]
+    PVE --> VM100["VM 100 - Windows 11 client"]
+    PVE --> VM101["VM 101 - tailscaleproxy - 192.168.86.201"]
+    PVE --> LXC102["LXC 102 - Pi-hole - 192.168.86.202"]
+    PVE --> VM103["VM 103 - DC01, Windows Server 2022 - 192.168.86.203"]
+    PVE --> LXC104["LXC 104 - Zammad - 192.168.86.204"]
+    GW -.->|DNS| LXC102
+    VM100 -.->|domain joined| VM103
+    REM["Remote devices"] -->|Tailscale| VM101
+```
+
+Per-guest specs and build history are in [Proxmox](Projects/Proxmox.md).
+
 ## Projects
 
 | Project | What it does | Status |
 |---|---|---|
-| **Active Directory** | Single-domain AD forest (`mujtaba.internal`) — domain controller, OU/security group structure, Group Policy enforcement, bulk user provisioning, file server with role-based NTFS permissions, and GPO software deployment, all verified against a real domain-joined client | Complete |
+| **Active Directory** | Single-domain AD forest (`mujtaba.internal`) — domain controller, OU/security group structure, Group Policy enforcement, bulk user provisioning, file server with role-based NTFS permissions, and GPO software deployment, plus a least-privilege delegated helpdesk account, all verified against a real domain-joined client | Complete |
 | **Pi-hole** | Network-wide DNS-based ad blocking, covering the whole home LAN and remote devices via Tailscale | Complete |
 | **Tailscale** | Remote access to the whole home network (subnet router) plus an exit node for sharing the home IP with specific outside devices | Complete |
+| **Zammad** | Helpdesk/ticketing system (LXC) modeled on the AD domain's departments, connected to AD through a delegated, password-reset-only technician account and tested with an end-to-end ticket workflow, including a negative permission test | Complete |
 
 Full build detail, the reasoning behind specific choices, and every issue hit along the way live in this vault — see **How This Vault Is Organized** below.
 

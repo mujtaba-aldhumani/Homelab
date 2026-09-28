@@ -64,6 +64,10 @@ Vault, sync, and Claude integration all set up and working. Project rotation app
 
 - Worked through the project-selection methodology above and researched real employer expectations across five IT fields — see [Daily Log — 2026-07-13](../Daily%20Logs/2026-07-13.md) for the full research notes
 
+### 2026-09-28
+
+- Audited the vault for consistency: the root README was missing Zammad and the AD helpdesk delegation, the Proxmox and Windows 11 VM project files had stale counts and missing log entries, and this file's next steps were out of date. All corrected, and an end-of-session checklist was added to `CLAUDE.md` — see [Daily Log — 2026-09-28](../Daily%20Logs/2026-09-28.md)
+
 ## Next Steps
 
-1. Continue using the rotation approach for future project selection, given about a month left until the career fair
+1. Continue using the rotation approach to choose the next project. The helpdesk ([Zammad](Zammad.md)) and sysadmin ([Active Directory](Active%20Directory.md)) slots are complete; networking, cybersecurity, and cloud remain

@@ -37,7 +37,7 @@ Install:
 
 ## Virtual Machines and LXC Containers
 
-The host currently runs three VMs and one LXC container. Full build detail for each lives in its own dedicated project file:
+The host currently runs three VMs and two LXC containers. Full build detail for each lives in its own dedicated project file:
 
 | ID | Name | Type | Purpose | Project |
 |---|---|---|---|---|
@@ -61,6 +61,22 @@ Proxmox installed, updated, and running on the no-subscription repo. Five worklo
 ### 2026-07-11
 
 - Completed the pre-installation checklist, resolved the USB boot/connectivity issue, and installed Proxmox VE 9.2-1 — see [Daily Log — 2026-07-11](../Daily%20Logs/2026-07-11.md)
+
+### 2026-07-12
+
+- Built the Windows 11 practice VM (VMID 100) and the Ubuntu Server VM (VMID 101) — see [Windows 11 VM](Windows%2011%20VM.md) and [Tailscale](Tailscale.md)
+
+### 2026-07-14
+
+- Built the Pi-hole LXC (VMID 102) — see [Pi-hole](Pi-hole.md)
+
+### 2026-08-27
+
+- Built the Windows Server domain controller VM (VMID 103) — see [Active Directory](Active%20Directory.md)
+
+### 2026-09-14
+
+- Built the Zammad LXC (VMID 104) — see [Zammad](Zammad.md)
 
 ## Next Steps
 
