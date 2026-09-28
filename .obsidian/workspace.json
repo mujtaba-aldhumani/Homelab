@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Logs/2026-09-15.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-09-15"
+              "title": "README"
             }
           }
         ]
@@ -187,6 +187,8 @@
   },
   "active": "d10d585c957ec678",
   "lastOpenFiles": [
+    "Daily Logs/README.md",
+    "Daily Logs/2026-09-15.md",
     "Daily Logs/2026-09-14.md",
     "README.md",
     "Troubleshooting/Zammad systemd Units Show sleep infinity as Main Process.md",
@@ -203,12 +205,10 @@
     "Decisions/Own Admin Account over Separate Agent Persona for Zammad.md",
     "Decisions/Narrow Password-Reset-Only Delegation for Helpdesk-Techs.md",
     "Decisions/Dedicated Helpdesk OU over Nesting Under Departments.md",
-    "Daily Logs/2026-09-15.md",
     "conflict-files-obsidian-git.md",
     "sync test.md",
     "Troubleshooting/IP Forwarding Not Persisting After Reboot.md",
     "Decisions/Dedicated Workstations OU for Software Deployment GPO Scope.md",
-    "Daily Logs/README.md",
     "Troubleshooting/GPO Software Package Browser Defaults to Local Drive.md",
     "Troubleshooting/README.md",
     "Decisions/README.md",
