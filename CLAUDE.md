@@ -180,6 +180,14 @@ Specs: ...
 1. <numbered list>
 ```
 
+## Teaching Conventions
+
+The owner is learning, and wants to be able to explain every project to employers. Apply these to every project, in the docs and in live guidance:
+
+1. **Security alongside the main lesson.** He wants to end up in cybersecurity, so every project teaches at least one security principle or technique (for example least privilege, default deny, attack surface reduction, defense in depth) tied to what is actually being built. Each project file gets a short "Security Takeaways" section.
+2. **Acronyms explained on first use**, with a small, simple explanation of each term, e.g. "VLAN (Virtual Local Area Network) — a way to split one network into separate, isolated groups."
+3. **Introduce terms gradually.** Don't stack many new technical terms in one paragraph; explain each before building on it.
+
 ## End-of-Session Checklist
 
 Before ending any session that touched the lab or the vault, walk this list. Documentation is Claude's job every session, not a follow-up the user should have to request.

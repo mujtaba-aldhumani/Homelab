@@ -47,6 +47,15 @@ The host currently runs three VMs and two LXC containers. Full build detail for 
 | 103 | DC01 | VM | Active Directory domain controller | [Active Directory](Active%20Directory.md) |
 | 104 | zammad | LXC | Helpdesk/ticketing system | [Zammad](Zammad.md) |
 
+## Virtual Networks
+
+| Bridge | Purpose | Physical port | Notes |
+|---|---|---|---|
+| `vmbr0` | Main lab network — all five guests plus the host (`192.168.86.200/24`, gateway `192.168.86.1`) | `nic0` | Not VLAN aware |
+| `vmbr1` | Isolated sandbox for the [OPNsense Segmentation Lab](OPNsense%20Segmentation%20Lab.md) | none | VLAN aware, no host IP address |
+
+The host also lists a second wired interface (`nic1`) and a wireless one (`wlp2s0`), both present but unconfigured.
+
 ## Status
 
 Proxmox installed, updated, and running on the no-subscription repo. Five workloads deployed across three VMs and two LXC containers — see the individual project files above for each one's current state.
@@ -78,6 +87,10 @@ Proxmox installed, updated, and running on the no-subscription repo. Five worklo
 
 - Built the Zammad LXC (VMID 104) — see [Zammad](Zammad.md)
 
+### 2026-09-28
+
+- Created the isolated `vmbr1` bridge for the [OPNsense Segmentation Lab](OPNsense%20Segmentation%20Lab.md)
+
 ## Next Steps
 
-1. Decide the next homelab project from the candidate rotation — see [Documentation & Planning](Documentation%20&%20Planning.md)
+1. Continue the [OPNsense Segmentation Lab](OPNsense%20Segmentation%20Lab.md) (networking slot in the rotation)
