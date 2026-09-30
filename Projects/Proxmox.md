@@ -35,9 +35,16 @@ Install:
 - Installed Proxmox VE 9.2-1: ext4 filesystem, `/dev/nvme0n1`, hostname `proxmox.lan`, IP `192.168.86.200/24`, gateway `192.168.86.1`, DNS `8.8.8.8` at install time (later pointed network-wide at Pi-hole, see [Pi-hole](Pi-hole.md))
 - Confirmed web UI access at `https://192.168.86.200:8006`, ran initial package updates, switched from the enterprise repo to no-subscription
 
+## Virtual Networks
+
+| Bridge | Purpose | Physical port | Notes |
+|---|---|---|---|
+| `vmbr0` | Main lab network — all five original guests plus the host (`192.168.86.200/24`, gateway `192.168.86.1`) | `nic0` | Not VLAN aware |
+| `vmbr1` | Isolated sandbox for the [OPNsense Segmentation Lab](OPNsense%20Segmentation%20Lab.md) | none | VLAN aware, no host IP address |
+
 ## Virtual Machines and LXC Containers
 
-The host currently runs three VMs and two LXC containers. Full build detail for each lives in its own dedicated project file:
+The host currently runs four VMs and two LXC containers (plus a temporary `lantest` LXC used for OPNsense GUI access). Full build detail for each lives in its own dedicated project file:
 
 | ID | Name | Type | Purpose | Project |
 |---|---|---|---|---|
@@ -46,10 +53,11 @@ The host currently runs three VMs and two LXC containers. Full build detail for 
 | 102 | pihole | LXC | Network-wide DNS ad blocking | [Pi-hole](Pi-hole.md) |
 | 103 | DC01 | VM | Active Directory domain controller | [Active Directory](Active%20Directory.md) |
 | 104 | zammad | LXC | Helpdesk/ticketing system | [Zammad](Zammad.md) |
+| 105 | opnsense | VM | Firewall/router for the isolated segmentation sandbox | [OPNsense Segmentation Lab](OPNsense%20Segmentation%20Lab.md) |
 
 ## Status
 
-Proxmox installed, updated, and running on the no-subscription repo. Five workloads deployed across three VMs and two LXC containers — see the individual project files above for each one's current state.
+Proxmox installed, updated, and running on the no-subscription repo. Six workloads deployed across four VMs and two LXC containers (plus a temporary `lantest` LXC used for OPNsense GUI access) — see the individual project files above for each one's current state.
 
 ## Related Decisions
 
@@ -78,6 +86,14 @@ Proxmox installed, updated, and running on the no-subscription repo. Five worklo
 
 - Built the Zammad LXC (VMID 104) — see [Zammad](Zammad.md)
 
+### 2026-09-28
+
+- Created the isolated `vmbr1` bridge for the [OPNsense Segmentation Lab](OPNsense%20Segmentation%20Lab.md)
+
+### 2026-09-29
+
+- Built and installed the OPNsense VM (VMID 105) — see [OPNsense Segmentation Lab](OPNsense%20Segmentation%20Lab.md)
+
 ## Next Steps
 
-1. Decide the next homelab project from the candidate rotation — see [Documentation & Planning](Documentation%20&%20Planning.md)
+1. Continue the [OPNsense Segmentation Lab](OPNsense%20Segmentation%20Lab.md): create VLANs, DHCP scopes, and firewall rules

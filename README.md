@@ -22,6 +22,8 @@ flowchart TD
     PVE --> LXC102["LXC 102 - Pi-hole - 192.168.86.202"]
     PVE --> VM103["VM 103 - DC01, Windows Server 2022 - 192.168.86.203"]
     PVE --> LXC104["LXC 104 - Zammad - 192.168.86.204"]
+    PVE --> VM105["VM 105 - OPNsense - WAN: DHCP, LAN: 192.168.1.1"]
+    VM105 --> BR1["vmbr1 - isolated sandbox"]
     GW -.->|DNS| LXC102
     VM100 -.->|domain joined| VM103
     REM["Remote devices"] -->|Tailscale| VM101
@@ -37,6 +39,7 @@ Per-guest specs and build history are in [Proxmox](Projects/Proxmox.md).
 | **Pi-hole** | Network-wide DNS-based ad blocking, covering the whole home LAN and remote devices via Tailscale | Complete |
 | **Tailscale** | Remote access to the whole home network (subnet router) plus an exit node for sharing the home IP with specific outside devices | Complete |
 | **Zammad** | Helpdesk/ticketing system (LXC) modeled on the AD domain's departments, connected to AD through a delegated, password-reset-only technician account and tested with an end-to-end ticket workflow, including a negative permission test | Complete |
+| **OPNsense Segmentation Lab** | Isolated virtual sandbox inside Proxmox for practicing network segmentation: an open source firewall (OPNsense) separating VLAN-based groups of guests, with default-deny rules and documented tests | In progress |
 
 Full build detail, the reasoning behind specific choices, and every issue hit along the way live in this vault — see **How This Vault Is Organized** below.
 

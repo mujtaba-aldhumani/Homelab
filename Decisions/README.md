@@ -41,6 +41,10 @@ One file per meaningful choice — what was chosen over what, and why. Grouped b
 - [Own Admin Account over Separate Agent Persona for Zammad](Own%20Admin%20Account%20over%20Separate%20Agent%20Persona%20for%20Zammad.md) (superseded)
 - [Single IT Support Group over Per-Department Groups for Zammad](Single%20IT%20Support%20Group%20over%20Per-Department%20Groups%20for%20Zammad.md)
 
+## OPNsense Segmentation Lab
+
+- [Isolated Virtual Bridge over Changing the Home Network](Isolated%20Virtual%20Bridge%20over%20Changing%20the%20Home%20Network.md)
+
 ## Documentation & Planning
 
 - [Claude Desktop - Filesystem MCP over Code Tab](Claude%20Desktop%20-%20Filesystem%20MCP%20over%20Code%20Tab.md)
