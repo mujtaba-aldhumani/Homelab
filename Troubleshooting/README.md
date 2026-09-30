@@ -41,6 +41,7 @@ One file per real problem hit, in Symptom → Diagnosis → Root Cause → Fix f
 ## OPNsense Segmentation Lab
 
 - [OPNsense WAN/LAN Interfaces Assigned Backwards](OPNsense%20WAN-LAN%20Interfaces%20Assigned%20Backwards.md)
+- [OPNsense DHCP Service Confusion - ISC vs Dnsmasq vs Kea](OPNsense%20DHCP%20Service%20Confusion%20-%20ISC%20vs%20Dnsmasq%20vs%20Kea.md)
 
 ## Documentation & Planning
 
