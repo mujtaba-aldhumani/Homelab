@@ -42,6 +42,8 @@ Install:
 | `vmbr0` | Main lab network — all five original guests plus the host (`192.168.86.200/24`, gateway `192.168.86.1`) | `nic0` | Not VLAN aware |
 | `vmbr1` | Isolated sandbox for the [OPNsense Segmentation Lab](OPNsense%20Segmentation%20Lab.md) | none | VLAN aware, no host IP address |
 
+The host also lists a second wired interface (`nic1`) and a wireless one (`wlp2s0`), both present but unconfigured.
+
 ## Virtual Machines and LXC Containers
 
 The host currently runs four VMs and two LXC containers (plus a temporary `lantest` LXC used for OPNsense GUI access). Full build detail for each lives in its own dedicated project file:

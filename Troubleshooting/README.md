@@ -38,6 +38,10 @@ One file per real problem hit, in Symptom → Diagnosis → Root Cause → Fix f
 
 - [Proxmox Installation - USB Boot and Network Connectivity Issues](Proxmox%20Installation%20-%20USB%20Boot%20and%20Network%20Connectivity%20Issues.md)
 
+## OPNsense Segmentation Lab
+
+- [OPNsense WAN/LAN Interfaces Assigned Backwards](OPNsense%20WAN-LAN%20Interfaces%20Assigned%20Backwards.md)
+
 ## Documentation & Planning
 
 - [Git Synchronization and Merge Conflict Troubleshooting](Git%20Synchronization%20and%20Merge%20Conflict%20Troubleshooting.md)
