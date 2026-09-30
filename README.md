@@ -39,7 +39,7 @@ Per-guest specs and build history are in [Proxmox](Projects/Proxmox.md).
 | **Pi-hole** | Network-wide DNS-based ad blocking, covering the whole home LAN and remote devices via Tailscale | Complete |
 | **Tailscale** | Remote access to the whole home network (subnet router) plus an exit node for sharing the home IP with specific outside devices | Complete |
 | **Zammad** | Helpdesk/ticketing system (LXC) modeled on the AD domain's departments, connected to AD through a delegated, password-reset-only technician account and tested with an end-to-end ticket workflow, including a negative permission test | Complete |
-| **OPNsense Segmentation Lab** | Isolated virtual sandbox inside Proxmox for practicing network segmentation: an open source firewall (OPNsense) separating VLAN-based groups of guests, with default-deny rules and documented tests | In progress |
+| **OPNsense Segmentation Lab** | Isolated virtual sandbox inside Proxmox for practicing network segmentation: an open source firewall (OPNsense) separating VLAN-based groups of guests, with default-deny rules proven by a failed cross-VLAN ping and a narrow HTTP-only allow rule proven by a passing curl and a still-failing ping | Complete |
 
 Full build detail, the reasoning behind specific choices, and every issue hit along the way live in this vault — see **How This Vault Is Organized** below.
 
