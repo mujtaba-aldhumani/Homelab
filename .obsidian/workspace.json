@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Projects/Proxmox.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Proxmox"
+              "title": "README"
             }
           }
         ]
@@ -187,10 +187,10 @@
   },
   "active": "520496b4d5110328",
   "lastOpenFiles": [
+    "Projects/Proxmox.md",
     "Troubleshooting/OPNsense Rules Not Taking Effect Until Deleted and Recreated.md",
     "Troubleshooting/OPNsense DHCP Service Confusion - ISC vs Dnsmasq vs Kea.md",
     "conflict-files-obsidian-git.md",
-    "Projects/Proxmox.md",
     "Projects/OPNsense Segmentation Lab.md",
     "README.md",
     "Decisions/Isolated Virtual Bridge over Changing the Home Network.md",
