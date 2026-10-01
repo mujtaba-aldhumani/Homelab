@@ -11,12 +11,14 @@
             "id": "520496b4d5110328",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Screenshots/tailscale-both-devices-connected.png"
+                "file": "README.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "tailscale-both-devices-connected"
+              "icon": "lucide-file",
+              "title": "README"
             }
           }
         ]
@@ -185,6 +187,9 @@
   },
   "active": "520496b4d5110328",
   "lastOpenFiles": [
+    "Screenshots/Pihole-DNS-Settings.png",
+    "Screenshots/Pihole-traffic-data.png",
+    "Screenshots/tailscale-both-devices-connected.png",
     "Screenshots/windows11-activation-error.png",
     "Screenshots/windows11-activation-unable-reactivate.png",
     "Screenshots/windows11-vm-config.png",
@@ -213,10 +218,8 @@
     "Projects/Zammad.md",
     "Decisions/Zammad over osTicket for Ticketing Project.md",
     "Decisions/Single IT Support Group over Per-Department Groups for Zammad.md",
-    "Screenshots/Pihole-DNS-Settings.png",
     "Daily Logs/2026-08-26.md.28996503039e82f293694aa5e872b6fb.tmp",
     "Daily Logs/2026-07-13.md.e4d01e4ea5900cae3a6245e05f0337fa.tmp",
-    "Screenshots/tailscale-both-devices-connected.png",
     "Screenshots/tailscale-both-devices-connected.png.png",
     "Screenshots/windows11-activation-unable-reactivate.png.png",
     "Screenshots/windows11-activation-error.png.png",
