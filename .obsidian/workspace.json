@@ -11,14 +11,12 @@
             "id": "520496b4d5110328",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
+                "file": "Screenshots/tailscale-both-devices-connected.png"
               },
-              "icon": "lucide-file",
-              "title": "README"
+              "icon": "lucide-image",
+              "title": "tailscale-both-devices-connected"
             }
           }
         ]
@@ -187,6 +185,12 @@
   },
   "active": "520496b4d5110328",
   "lastOpenFiles": [
+    "Screenshots/windows11-activation-error.png",
+    "Screenshots/windows11-activation-unable-reactivate.png",
+    "Screenshots/windows11-vm-config.png",
+    "Troubleshooting/raw.githubusercontent.com Intermittent DNS Resolution Failures.md",
+    "Troubleshooting/QuickEdit Mode and noVNC Selection Freezing Console Input.md",
+    "README.md",
     "Decisions/Narrow Per-Host Rule over Subnet-Wide Allow for Inter-VLAN Access.md",
     "Daily Logs/2026-09-30.md",
     "Projects/Proxmox.md",
@@ -194,7 +198,6 @@
     "Troubleshooting/OPNsense DHCP Service Confusion - ISC vs Dnsmasq vs Kea.md",
     "conflict-files-obsidian-git.md",
     "Projects/OPNsense Segmentation Lab.md",
-    "README.md",
     "Decisions/Isolated Virtual Bridge over Changing the Home Network.md",
     "Daily Logs/2026-09-28.md",
     "Daily Logs/README.md",
@@ -210,17 +213,11 @@
     "Projects/Zammad.md",
     "Decisions/Zammad over osTicket for Ticketing Project.md",
     "Decisions/Single IT Support Group over Per-Department Groups for Zammad.md",
-    "Decisions/Privileged over Unprivileged LXC for Zammad.md",
-    "Decisions/Own Admin Account over Separate Agent Persona for Zammad.md",
-    "Decisions/Narrow Password-Reset-Only Delegation for Helpdesk-Techs.md",
-    "Screenshots/windows11-vm-config.png",
     "Screenshots/Pihole-DNS-Settings.png",
     "Daily Logs/2026-08-26.md.28996503039e82f293694aa5e872b6fb.tmp",
-    "Screenshots/windows11-activation-unable-reactivate.png",
     "Daily Logs/2026-07-13.md.e4d01e4ea5900cae3a6245e05f0337fa.tmp",
     "Screenshots/tailscale-both-devices-connected.png",
     "Screenshots/tailscale-both-devices-connected.png.png",
-    "Screenshots/windows11-activation-error.png",
     "Screenshots/windows11-activation-unable-reactivate.png.png",
     "Screenshots/windows11-activation-error.png.png",
     "Screenshots/windows11-vm-config.png.png",
