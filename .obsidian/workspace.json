@@ -187,6 +187,8 @@
   },
   "active": "520496b4d5110328",
   "lastOpenFiles": [
+    "Decisions/Narrow Per-Host Rule over Subnet-Wide Allow for Inter-VLAN Access.md",
+    "Daily Logs/2026-09-30.md",
     "Projects/Proxmox.md",
     "Troubleshooting/OPNsense Rules Not Taking Effect Until Deleted and Recreated.md",
     "Troubleshooting/OPNsense DHCP Service Confusion - ISC vs Dnsmasq vs Kea.md",
@@ -211,8 +213,6 @@
     "Decisions/Privileged over Unprivileged LXC for Zammad.md",
     "Decisions/Own Admin Account over Separate Agent Persona for Zammad.md",
     "Decisions/Narrow Password-Reset-Only Delegation for Helpdesk-Techs.md",
-    "Decisions/Dedicated Helpdesk OU over Nesting Under Departments.md",
-    "sync test.md",
     "Screenshots/windows11-vm-config.png",
     "Screenshots/Pihole-DNS-Settings.png",
     "Daily Logs/2026-08-26.md.28996503039e82f293694aa5e872b6fb.tmp",

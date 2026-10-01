@@ -2,6 +2,7 @@
 
 Most recent first. GitHub's file browser above this list is sorted alphabetically (oldest first) — this index is the fastest way to jump to a recent entry.
 
+- [2026-09-30](2026-09-30.md)
 - [2026-09-28](2026-09-28.md)
 - [2026-09-15](2026-09-15.md)
 - [2026-09-14](2026-09-14.md)
