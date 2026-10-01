@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Daily Logs/2026-09-30.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "2026-09-30"
             }
           }
         ]
@@ -187,6 +187,7 @@
   },
   "active": "520496b4d5110328",
   "lastOpenFiles": [
+    "README.md",
     "Screenshots/Pihole-DNS-Settings.png",
     "Screenshots/Pihole-traffic-data.png",
     "Screenshots/tailscale-both-devices-connected.png",
@@ -195,7 +196,6 @@
     "Screenshots/windows11-vm-config.png",
     "Troubleshooting/raw.githubusercontent.com Intermittent DNS Resolution Failures.md",
     "Troubleshooting/QuickEdit Mode and noVNC Selection Freezing Console Input.md",
-    "README.md",
     "Decisions/Narrow Per-Host Rule over Subnet-Wide Allow for Inter-VLAN Access.md",
     "Daily Logs/2026-09-30.md",
     "Projects/Proxmox.md",
