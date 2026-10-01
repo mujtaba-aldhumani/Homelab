@@ -23,7 +23,11 @@ flowchart TD
     PVE --> VM103["VM 103 - DC01, Windows Server 2022 - 192.168.86.203"]
     PVE --> LXC104["LXC 104 - Zammad - 192.168.86.204"]
     PVE --> VM105["VM 105 - OPNsense - WAN: DHCP, LAN: 192.168.1.1"]
-    VM105 --> BR1["vmbr1 - isolated sandbox"]
+    VM105 --> BR1["vmbr1 - isolated sandbox trunk"]
+    BR1 --> VLAN10["VLAN 10 Servers - 10.10.10.0/24"]
+    BR1 --> VLAN20["VLAN 20 Clients - 10.10.20.0/24"]
+    VLAN10 --> SRV["LXC server-test - nginx"]
+    VLAN20 --> CLI["LXC client-test"]
     GW -.->|DNS| LXC102
     VM100 -.->|domain joined| VM103
     REM["Remote devices"] -->|Tailscale| VM101

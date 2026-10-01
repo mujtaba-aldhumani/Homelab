@@ -46,7 +46,7 @@ The host also lists a second wired interface (`nic1`) and a wireless one (`wlp2s
 
 ## Virtual Machines and LXC Containers
 
-The host currently runs four VMs and two LXC containers (plus a temporary `lantest` LXC used for OPNsense GUI access). Full build detail for each lives in its own dedicated project file:
+The host currently runs four VMs and two LXC containers (plus temporary test LXCs for the segmentation lab: `lantest`, `server-test`, `client-test`). Full build detail for each lives in its own dedicated project file:
 
 | ID | Name | Type | Purpose | Project |
 |---|---|---|---|---|
@@ -59,7 +59,7 @@ The host currently runs four VMs and two LXC containers (plus a temporary `lante
 
 ## Status
 
-Proxmox installed, updated, and running on the no-subscription repo. Six workloads deployed across four VMs and two LXC containers (plus a temporary `lantest` LXC used for OPNsense GUI access) — see the individual project files above for each one's current state.
+Proxmox installed, updated, and running on the no-subscription repo. Six workloads deployed across four VMs and two LXC containers (plus temporary test LXCs for the OPNsense Segmentation Lab: `lantest`, `server-test`, `client-test`) — see the individual project files above for each one's current state.
 
 ## Related Decisions
 
@@ -96,6 +96,10 @@ Proxmox installed, updated, and running on the no-subscription repo. Six workloa
 
 - Built and installed the OPNsense VM (VMID 105) — see [OPNsense Segmentation Lab](OPNsense%20Segmentation%20Lab.md)
 
+### 2026-09-30
+
+- Created both VLANs on the sandbox, fixed DHCP, proved default-deny, and tested a working inter-VLAN rule — see [OPNsense Segmentation Lab](OPNsense%20Segmentation%20Lab.md)
+
 ## Next Steps
 
-1. Continue the [OPNsense Segmentation Lab](OPNsense%20Segmentation%20Lab.md): create VLANs, DHCP scopes, and firewall rules
+1. Decide the next project in the rotation (Wazuh SIEM is the leading candidate) — see [Documentation & Planning](Documentation%20&%20Planning.md)

@@ -44,6 +44,7 @@ One file per meaningful choice — what was chosen over what, and why. Grouped b
 ## OPNsense Segmentation Lab
 
 - [Isolated Virtual Bridge over Changing the Home Network](Isolated%20Virtual%20Bridge%20over%20Changing%20the%20Home%20Network.md)
+- [Narrow Per-Host Rule over Subnet-Wide Allow for Inter-VLAN Access](Narrow%20Per-Host%20Rule%20over%20Subnet-Wide%20Allow%20for%20Inter-VLAN%20Access.md)
 
 ## Documentation & Planning
 
